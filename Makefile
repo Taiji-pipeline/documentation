@@ -56,7 +56,7 @@ clean:
 .PHONY: html
 html:
 	#$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
-	sphinx-versioning build  -r master docs $(BUILDDIR)
+	sphinx-versioning build  -r master ./ $(BUILDDIR)
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)."
 

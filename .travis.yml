@@ -16,7 +16,7 @@ deploy:
   github_token: $GITHUB_TOKEN
   on:
     branch: master
-  local_dir: _build
+  local_dir: html_build
   target_branch: gh-pages
 
 before_install:
