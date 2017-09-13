@@ -1,0 +1,26 @@
+language:        c
+
+os:
+  - linux
+
+env:
+  global:
+    - COMMIT_AUTHOR_EMAIL: "kai@kzhang.org"
+
+python:
+  - "3.5"
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+  local_dir: _build
+  target_branch: gh-pages
+
+before_install:
+  - pip install --user sphinx==1.5.6 sphinxcontrib-versioning sphinx_rtd_theme;
+
+script:
+  - make html
