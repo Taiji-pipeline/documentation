@@ -1,6 +1,9 @@
 Configuration
 =============
 
+Basic options
+-------------
+
 input
 ^^^^^
 
