@@ -10,4 +10,4 @@ the program with appropriate flags.
 peaks. Flag: ``idr``.
 
 2. Sun Grid Engine (SGE). This extension allows program run on a SGE system.
-Flag: ``sge``.
+Flag: ``drmaa``.

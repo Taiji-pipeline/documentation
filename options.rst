@@ -1,6 +1,12 @@
 Configuration
 =============
 
+Example files
+-------------
+
+* `example configuration file <data/example_config.yml>`.
+* `example input file <data/example_input.yml>`.
+
 Basic options
 -------------
 
@@ -57,8 +63,8 @@ Example: "/home/kai/genome/GRCh38/gencode.v25.annotation.gtf".
 motif_file
 ^^^^^^^^^^
 
-MEME format file containing motifs. Human and mouse motif files can be found
-here: https://github.com/kaizhang/Taiji/tree/master/docs/data/motifs
+MEME format file containing motifs. (`Human <data/motifs/cisBP_human.meme>` and
+`mouse <data/motifs/cisBP_mouse.meme>` motif files)
 
 Example: "/home/kai/motif_databases/cisBP_human.meme".
 
