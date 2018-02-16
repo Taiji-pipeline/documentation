@@ -37,6 +37,5 @@ ATAC-seq:
     replicates:
       - rep: 1
         files:
-          - pair:
-            - path: fastq_merged_UCSD/OA1316_merged_R1.fastq.gz
-            - path: fastq_merged_UCSD/OA1316_merged_R2.fastq.gz
+          - path: fastq_merged_UCSD/OA1316_merged_R1.bam
+            tags: ['Pairend']
