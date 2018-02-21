@@ -1,41 +1,44 @@
 RNA-seq:
-  - id: OA1027_RNA
-    group: OA1027
+  - id: liver_RNA
+    group: liver
     replicates:
       - rep: 1
         files:
           - pair:
-            - path: RNA-seq/OA1027_rep1.fastq.gz
-            - path: RNA-seq/OA1027_rep2.fastq.gz
+            - path: /home/user/data/liver_RNA_seq_F.fastq.gz
+            - path: /home/user/data/liver_RNA_seq_R.fastq.gz
 
-  - id: OA1316_RNA
-    group: OA1316
+  - id: heart_RNA
+    group: heart
     replicates:
       - rep: 1
         files:
           - pair:
-            - path: RNA-seq/OA1316_rep1.fastq.gz
-            - path: RNA-seq/OA1316_rep2.fastq.gz
+            - path: /home/user/data/heart_RNA_seq_rep1_F.fastq.gz
+            - path: /home/user/data/heart_RNA_seq_rep1_R.fastq.gz
       - rep: 2
         files:
-          - pair:
-            - path: RNA-seq/RA1346_rep1.fastq.gz
-            - path: RNA-seq/RA1346_rep2.fastq.gz
+          # Customized gene expression file
+          - path: /home/user/data/heart_RNA_seq_rep2.tsv
+            tags: ['GeneQuant']
 
 ATAC-seq:
-  - id: OA1027_ATAC
-    group: OA1027
+  - id: liver_ATAC
+    group: liver
     replicates:
       - rep: 1
         files:
-          - pair:
-            - path: fastq_merged_UCSD/OA1027_merged_R1.fastq.gz
-            - path: fastq_merged_UCSD/OA1027_merged_R2.fastq.gz
+          - path: ENCFF844GGH
+            tags: ['ENCODE']
+      - rep: 1
+        files:
+          - path: GSEXXX
+            format: SRA
 
-  - id: OA1316_ATAC
-    group: OA1316
+  - id: heart_ATAC
+    group: heart
     replicates:
       - rep: 1
         files:
-          - path: fastq_merged_UCSD/OA1316_merged_R1.bam
+          - path: /home/user/data/heart_ATAC_seq.bam
             tags: ['Pairend']
