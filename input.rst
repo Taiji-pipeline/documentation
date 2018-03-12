@@ -26,7 +26,7 @@ RNA-seq
 | ``*.fastq`` or    | Raw reads     | None                   | None         |
 | ``*.fastq.gz``    |               |                        |              |
 +-------------------+---------------+------------------------+--------------+
-| Plain Text        | Expression    | "gene quantification"  | None         |
+| Plain Text        | Expression    | "GeneQuant"            | None         |
 |                   | profile       |                        |              |
 +-------------------+---------------+------------------------+--------------+
 
@@ -36,7 +36,7 @@ HiC
 +-------------------+-----------------+---------------+--------------+
 | Supported formats | Description     | Required tags | Optional tags|
 +===================+=================+===============+==============+
-| Plain Text        | a list of Loops | "loops"       | None         |
+| Plain Text        | a list of Loops |"ChromosomeLoop"| None        |
 +-------------------+-----------------+---------------+--------------+
 
 Taiji can automatically download data from ENCODE portal and GEO database.

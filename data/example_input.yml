@@ -30,7 +30,7 @@ ATAC-seq:
         files:
           - path: ENCFF844GGH
             tags: ['ENCODE']
-      - rep: 1
+      - rep: 2
         files:
           - path: GSEXXX
             format: SRA
@@ -42,3 +42,20 @@ ATAC-seq:
         files:
           - path: /home/user/data/heart_ATAC_seq.bam
             tags: ['Pairend']
+
+HiC:
+  - id: liver_HiC
+    group: liver
+    replicates:
+      - rep: 1
+        files:
+          - path: /home/user/data/liver_loops.txt
+            tags: ['ChromosomeLoop']
+
+  - id: heart_ATAC
+    group: heart
+    replicates:
+      - rep: 1
+        files:
+          - path: /home/user/data/heart_loops.txt
+            tags: ['ChromosomeLoop']
