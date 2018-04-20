@@ -41,7 +41,7 @@ ATAC-seq:
       - rep: 1
         files:
           - path: /home/user/data/heart_ATAC_seq.bam
-            tags: ['Pairend']
+            tags: ['PairedEnd']
 
 HiC:
   - id: liver_HiC
