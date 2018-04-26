@@ -59,3 +59,20 @@ HiC:
         files:
           - path: /home/user/data/heart_loops.txt
             tags: ['ChromosomeLoop']
+
+# Experimental feature added since v0.4.0
+H3K27ac:
+  - id: liver_H3K27ac
+    group: liver
+    replicates:
+      - rep: 0
+        files:
+          - path: /home/user/data/liver_H3K27ac.peak
+            format: ['NarrowPeak']
+  - id: heart_H3K27ac
+    group: heart
+    replicates:
+      - rep: 0
+        files:
+          - path: /home/user/data/heart_H3K27ac.peak
+            format: ['BroadPeak']
