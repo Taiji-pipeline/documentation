@@ -27,7 +27,7 @@ Parallelism
 -----------
 
 Taiji supports two levels of parallelism -- node level and workflow level. Node
-level parallelism is automatically turned on when compiling with the ``SGE`` flag.
+level parallelism is automatically turned on when compiling with the ``drmaa`` flag.
 The workflow level parallelism can be turned on using `-N <num_of_process>`.
 However, this is only recommended for users with a super computer, as it will
 consume a lot of memory.
@@ -78,4 +78,19 @@ BAM, gene and transcript quantification files for RNA-seq data.
 Visualize the results
 ---------------------
 
-We will release the codes of data visualization soon. Stay tuned...
+Download the software from `here <https://github.com/Taiji-pipeline/Taiji-view>`_. Use ``stack install`` to install the software.
+
+To visualize the result, use:
+
+::
+
+    taiji-view rank GeneRanks.tsv --expression RNASeq/expression_profile.tsv output.svg
+
+``GeneRanks.tsv`` is the file containing the PageRank result; ``RNASeq/expression_profile.tsv`` is the file containing the gene expressions; ``output.svg`` is the output file.
+
+Filtering the result
+^^^^^^^^^^^^^^^^^^^^
+
+``--cv`` can be used to filter the result based on the coefficient of variance (CV) of PageRank scores. For example, ``--cv 0.5`` will exclude any gene with CV less than 0.5. The default value is 1, which keeps the highly variable genes.
+
+The file type of the output is determined by the suffix of file name. Supported file extensions include ".png", ".pdf", ".jpg", ".svg".

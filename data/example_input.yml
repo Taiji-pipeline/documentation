@@ -68,11 +68,11 @@ H3K27ac:
       - rep: 0
         files:
           - path: /home/user/data/liver_H3K27ac.peak
-            format: ['NarrowPeak']
+            format: NarrowPeak
   - id: heart_H3K27ac
     group: heart
     replicates:
       - rep: 0
         files:
           - path: /home/user/data/heart_H3K27ac.peak
-            format: ['BroadPeak']
+            format: BroadPeak
