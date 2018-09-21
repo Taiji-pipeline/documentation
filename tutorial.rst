@@ -45,6 +45,7 @@ Results
 The structure of the results in the output directory looks like this:
 
 ::
+
     output_directory
     +-- ATACSeq
     |   +-- Bam
