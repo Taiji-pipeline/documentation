@@ -42,41 +42,38 @@ Delete this file if you want a fresh run.
 Results
 -------
 
-The Taiji pipeline outputs many files, distributed in several directories.
+The structure of the results in the output directory looks like this:
 
-``OUTPUTDIR/Rank/``
-^^^^^^^^^^^^^^^^^^^
-
-This is the primary output of Taiji pipeline. It contains the TF ranks under different
-conditions / cell-types. Cell-type-specific TF can be identified by looking at
-the TF rank dynamics (fold-change) across different cell types.
-
-- `GeneRank_all.tsv`: Ranks for all genes.
-- `GeneRank_filtered.tsv`: Genes with lower rank and that are less variate are removed.
-
-``OUTPUTDIR/TFBS/``
-^^^^^^^^^^^^^^^^^^^
-
-BED files of predicted TF binding sites in each cell type.
-
-``OUTPUTDIR/Network/``
-^^^^^^^^^^^^^^^^^^^^^^
-
-Static gene regulatory network for each cell type.
-
-``OUTPUTDIR/ATAC_Seq/``
-^^^^^^^^^^^^^^^^^^^^^^^
-
-BAM, BED, and peak files for ATAC-seq data.
-
-``OUTPUTDIR/RNA_Seq/``
-^^^^^^^^^^^^^^^^^^^^^^
-
-BAM, gene and transcript quantification files for RNA-seq data.
+::
+    output_directory
+    +-- ATACSeq
+    |   +-- Bam
+    |   |   +-- *.bam              (raw alignment files)
+    |   |   +-- *_filt.bam         (filtered alignment files)
+    |   |   +-- *_filt_dedup.bam   (filtered and deduplicated alignment files)
+    |   +-- Bed
+    |   |   +-- *.bed.gz           (BED files converted from Bam files)
+    |   |   +-- *.merged.bed.gz    (merged BED file from all replicates)
+    |   +-- Download               (any files that are downloaded from the web)
+    |   +-- Peaks
+    |   |   +-- *.narrowPeak       (narrow peaks called by MACS2 using loose cutoff)
+    |   +-- TFBS
+    |   |   +-- *.bed              (TF binding sites found in open chromatin)
+    |   +-- openChromatin.bed      (the union of accessible chromatin from all samples)
+    |   +-- QC.tsv                 (some quality control metrics)
+    +-- Network                    (network related files)
+    +-- Promoters
+        +-- *_promoters.bed        (active promoters)
+    +-- RNASeq
+        +-- *_gene_quant.tsv       (gene quantification)
+        +-- *.bam                  (alignment files)
+        +-- expression_profile.tsv (expression profiles from all samples in one file)
+    +-- GeneRanks_PValues.tsv      (p-values for the PageRank scores)
+    +-- GeneRanks.tsv              (PageRank scores)
 
 
-Visualize the results
----------------------
+Visualization
+-------------
 
 Download the software from `here <https://github.com/Taiji-pipeline/Taiji-view>`_. Use ``stack install`` to install the software.
 
