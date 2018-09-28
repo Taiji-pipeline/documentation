@@ -5,7 +5,6 @@ Example files
 -------------
 
 * :download:`example configuration file <data/example_config.yml>`.
-* :download:`example input file <data/example_input.yml>`.
 
 Basic options
 -------------
@@ -13,8 +12,7 @@ Basic options
 input
 ^^^^^
 
-The path to a file specifying the input data sets. The software come with
-an example file named "input.yaml".
+The path to a file specifying the input data sets. See :doc:`input` for instructions for creating the input file.
 
 Example: "data/input.yml".
 
