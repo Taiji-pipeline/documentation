@@ -45,10 +45,9 @@ When the input format is "plain text", Taiji assumes it contains two columns
 separated by Tabs. The first column is the names of genes and the second column is
 the expression levels. For example:
 
-```
-Gene1 <TAB> 12
-Gene2 <TAB> 20
-```
+::
+    Gene1 <TAB> 12
+    Gene2 <TAB> 20
 
 HiC
 ---
@@ -62,18 +61,56 @@ HiC
 Currently the pipeline do not analyze HiC data, so the user need to
 provide the end result - a list of loops, in following format:
 
-```
-chrom_1 <TAB> start_1 <TAB> end_1 <TAB> chrom_2 <TAB> start_2 <TAB> end_2
-```
+::
+    chrom_1 <TAB> start_1 <TAB> end_1 <TAB> chrom_2 <TAB> start_2 <TAB> end_2
 
 For example:
 
-```
-chr21 <TAB> 29343 <TAB> 500000 <TAB> chr21 <TAB> 1009340 <TAB> 1023400
-```
-
+::
+    chr21 <TAB> 29343 <TAB> 500000 <TAB> chr21 <TAB> 1009340 <TAB> 1023400
 
 Data in the internet
 ---------------------
 
-Taiji can automatically download data from ENCODE portal and GEO database.
+Taiji can automatically download and analyze data from ENCODE portal and GEO database.
+
+Using data from GEO
+^^^^^^^^^^^^^^^^^^^
+
+This requires ``fastq-dump`` to be installed.
+
+
+::
+    ATAC-Seq:
+        - group: 'CD4_day1'
+          replicates:
+          - rep: 1
+            files:
+            - path: SRR891275
+              format: SRA
+              tags: ['Pairend']
+
+Using data from ENCODE
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+    ATAC-Seq:
+    - group: 'heart_left_ventricle'
+      id: heart_left_ventricle_ATAC
+      replicates:
+      - rep: 1
+        files:
+          - pair:
+            - path: ENCFF766IGD
+              tags: ['ENCODE']
+            - path: ENCFF075UOA
+              tags: ['ENCODE']
+
+    RNA-Seq:
+    - group: 'heart_left_ventricle'
+      id: heart_left_ventricle_RNA
+      replicates:
+      - rep: 1
+        files:
+        - path: ENCFF884JDN
+          tags: ['ENCODE', 'GeneQuant']
