@@ -62,11 +62,13 @@ Currently the pipeline do not analyze HiC data, so the user need to
 provide the end result - a list of loops, in following format:
 
 ::
+
     chrom_1 <TAB> start_1 <TAB> end_1 <TAB> chrom_2 <TAB> start_2 <TAB> end_2
 
 For example:
 
 ::
+
     chr21 <TAB> 29343 <TAB> 500000 <TAB> chr21 <TAB> 1009340 <TAB> 1023400
 
 Data in the internet
@@ -81,6 +83,7 @@ This requires ``fastq-dump`` to be installed.
 
 
 ::
+
     ATAC-Seq:
         - group: 'CD4_day1'
           replicates:
@@ -94,6 +97,7 @@ Using data from ENCODE
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ::
+
     ATAC-Seq:
     - group: 'heart_left_ventricle'
       id: heart_left_ventricle_ATAC
