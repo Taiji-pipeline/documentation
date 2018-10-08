@@ -1,10 +1,11 @@
 Configuration
 =============
 
-Example files
--------------
+To get started, modify the example file below:
 
 * :download:`example configuration file <data/example_config.yml>`.
+
+See sections below for explainations of each field.
 
 Basic options
 -------------
