@@ -5,6 +5,10 @@ The input data file can be written in either
 the `YAML <https://en.wikipedia.org/wiki/YAML>`_ or
 the `TSV <https://en.wikipedia.org/wiki/Tab-separated_values>`_ format.
 
+YAML format is more readable, but it is sensitive to indentation and beginners
+usually get confused. In this case, you can try the TSV format which is
+usually more convenient and straightforward.
+
 See these examples: 
 
 * :download:`example input file (YAML) <data/example_input.yml>`.
@@ -46,8 +50,10 @@ separated by Tabs. The first column is the names of genes and the second column 
 the expression levels. For example:
 
 ::
+
     Gene1 <TAB> 12
     Gene2 <TAB> 20
+    Gene3 <TAB> 25
 
 HiC
 ---
@@ -70,6 +76,7 @@ For example:
 ::
 
     chr21 <TAB> 29343 <TAB> 500000 <TAB> chr21 <TAB> 1009340 <TAB> 1023400
+    chr1  <TAB> 10321 <TAB> 102100 <TAB> chr1  <TAB> 107150  <TAB> 123400
 
 Data in the internet
 ---------------------
@@ -79,7 +86,8 @@ Taiji can automatically download and analyze data from ENCODE portal and GEO dat
 Using data from GEO
 ^^^^^^^^^^^^^^^^^^^
 
-This requires ``fastq-dump`` to be installed.
+.. note::
+    The ``fastq-dump`` is needed for downloading data from GEO database.
 
 
 ::
