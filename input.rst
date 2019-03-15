@@ -5,9 +5,9 @@ The input data file can be written in either
 the `YAML <https://en.wikipedia.org/wiki/YAML>`_ or
 the `TSV <https://en.wikipedia.org/wiki/Tab-separated_values>`_ format.
 
-YAML format is more readable, but it is sensitive to indentation and beginners
-usually get confused. In this case, you can try the TSV format which is
-usually more convenient and straightforward.
+YAML format is more readable and powerful, but it is sensitive to
+indentation and beginners usually get confused.
+For simple cases, the TSV format is easier to work with and more straightforward.
 
 See these examples: 
 
@@ -88,18 +88,20 @@ Using data from GEO
 
 .. note::
     The ``fastq-dump`` is needed for downloading data from GEO database.
+    The ``SRA`` needs to be added to the "format" field.
 
 
 ::
 
     ATAC-Seq:
-        - group: 'CD4_day1'
+        - group: 'ATAC_CD4_day1'
+          id: 'CD4_day1'
           replicates:
           - rep: 1
             files:
             - path: SRR891275
               format: SRA
-              tags: ['Pairend']
+              tags: ['PairedEnd']
 
 Using data from ENCODE
 ^^^^^^^^^^^^^^^^^^^^^^
