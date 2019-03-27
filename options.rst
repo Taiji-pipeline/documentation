@@ -62,8 +62,11 @@ Example: "/home/kai/genome/GRCh38/gencode.v25.annotation.gtf".
 motif_file
 ^^^^^^^^^^
 
-MEME format file containing motifs. (:download:`Human <data/motifs/cisBP_human.meme>`
-and :download:`mouse <data/motifs/cisBP_mouse.meme>` motif files)
+MEME format file containing motifs.
+The naming convention for motifs is `TF_NAME+OTHER_STRING", where
+the `TF_NAME` should match the gene names in your annotation file.
+See these files for examples: :download:`Human <data/motifs/cisBP_human.meme>`
+and :download:`mouse <data/motifs/cisBP_mouse.meme>` motif files.
 
 Example: "/home/kai/motif_databases/cisBP_human.meme".
 
