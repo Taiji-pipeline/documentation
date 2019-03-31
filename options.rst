@@ -24,14 +24,6 @@ Directory containing the results.
 
 Example: "output/".
 
-picard
-^^^^^^
-
-The path to the picard tools.
-
-Example: "/home/kai/software/picard-tools-1.140/picard.jar".
-
-
 genome
 ^^^^^^
 
