@@ -32,6 +32,29 @@ ATAC-seq
 | ``*.bed.gz``      |               |               |                           |
 +-------------------+---------------+---------------+---------------------------+
 
+Taiji will use MACS2 to call peaks. It is also possible to use your own peaks.
+To do so, include the peak files in your input file, for example:
+
+::
+
+    ATAC-Seq:
+        - group: 'ATAC_CD4_day1'
+          id: 'CD4_day1'
+          replicates:
+          - rep: 1
+            files:
+            - path: CD4.narrowpeak
+              format: NarrowPeak
+            - path: CD4.bed.gz
+
+OR in TSV format:
+
+::
+
+    type <TAB> id <TAB> group <TAB> rep <TAB> path <TAB> format
+    ATAC-seq <TAB> ATAC_CD4_day1 <TAB> CD4_day1 <TAB> 1 <TAB> CD4.narrowpeak <TAB> NarrowPeak
+    ATAC-seq <TAB> ATAC_CD4_day1 <TAB> CD4_day1 <TAB> 1 <TAB> CD4.bed.gz <TAB> Bed
+
 RNA-seq
 -------
 
