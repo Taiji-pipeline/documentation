@@ -7,25 +7,22 @@ input: "example_input.yml"
 
 output_dir: "output/"
 
-genome: "/home/kai/genome/GRCh38/Sequence/BWAIndex/genome.fa"
-
-annotation: "/home/kai/genome/GRCh38/Annotation/gencode.v25.annotation.gtf"
-
-motif_file: "/home/kai/motif_databases/cisBP_human.meme"
+assembly: "GRCh38"
 
 ################################################################################
-# You don't have to physically provide the following files. But you do need to
-# specify the locations where these files will be generated automatically if
-# they are absent. Note the program DO NOT overwrite existing files/directories
-# so that you can provide your own indices without having the program generate
-# them. If you want to re-generate indices, make sure delete correponding
-# files/directories first.
+# Advanced settings
 ################################################################################
 
-genome_index: "/home/kai/genome/GRCh38/Sequence/GRCh38.index"
+#genome: "/home/kai/genome/GRCh38/Sequence/BWAIndex/genome.fa"
 
-bwa_index: "/home/kai/genome/GRCh38/Sequence/BWAIndex/"
+#annotation: "/home/kai/genome/GRCh38/Annotation/gencode.v25.annotation.gtf"
 
-star_index: "/home/kai/genome/GRCh38/Sequence/STAR_index/"
+#motif_file: "/home/kai/motif_databases/cisBP_human.meme"
 
-rsem_index: "/home/kai/genome/GRCh38/Sequence/RSEM_index/"
+#genome_index: "/home/kai/genome/GRCh38/Sequence/GRCh38.index"
+
+#bwa_index: "/home/kai/genome/GRCh38/Sequence/BWAIndex/"
+
+#star_index: "/home/kai/genome/GRCh38/Sequence/STAR_index/"
+
+#rsem_index: "/home/kai/genome/GRCh38/Sequence/RSEM_index/"

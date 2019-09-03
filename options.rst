@@ -24,22 +24,25 @@ Directory containing the results.
 
 Example: "output/".
 
+assembly
+^^^^^^^^
+
+(Optional.) The name of genome assembly: "GRCh38", "hg38", "GRCm38" or "mm10".
+The "assembly" is used to download "genome", "annotation" and "motif_file"
+when the values of these fields are not provided.
+
 genome
 ^^^^^^
 
-Complete genome in a SINGLE plain FASTA file. Genome can be downloaded from
-Gencode (human and mouse), UCSC or ENSEMBL.
-Example link for human:
-http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz.
-*Important*: Remember to ungzip the file using "gzip -d hg38.fa.gz"!
-Tip: To make a single genome file from multiple fastq files, execute:
-`cat chr1.fa chr2.fa chr3.fa > genome.fa`
+(Optional.)
+Complete genome in a SINGLE ungzipped FASTA file.
 
 Example: "/home/kai/genome/GRCh38/genome.fa".
 
 annotation
 ^^^^^^^^^^
 
+(Optional.)
 Genome annotation in *GTF* format. For human and mouse, Gencode annotations
 are available at http://www.gencodegenes.org/.
 *Very important*: chromosome names in the annotations GTF file have to match
@@ -54,14 +57,20 @@ Example: "/home/kai/genome/GRCh38/gencode.v25.annotation.gtf".
 motif_file
 ^^^^^^^^^^
 
+(Optional.)
 MEME format file containing motifs.
-The naming convention for motifs is `TF_NAME+OTHER_STRING", where
-the `TF_NAME` should match the gene names in your annotation file.
+The naming convention for motifs is ``TF_NAME+OTHER_STRING``, where
+the ``TF_NAME`` should match the gene names in your annotation file.
 See these files for examples: :download:`Human <data/motifs/cisBP_human.meme>`
 and :download:`mouse <data/motifs/cisBP_mouse.meme>` motif files.
 
 Example: "/home/kai/motif_databases/cisBP_human.meme".
 
+callpeak_fdr
+^^^^^^^^^^^^
+
+(Optional.)
+FDR threshold for peak calling.
 
 Genome Indices
 --------------
@@ -78,6 +87,7 @@ Genome Indices
 seq_index
 ^^^^^^^^^
 
+(Optional.)
 This is the *FILE* containing GENOME SEQUENCE INDEX.
 
 Example: "/home/kai/genome/GRCh38/GRCh38.index".
@@ -85,6 +95,7 @@ Example: "/home/kai/genome/GRCh38/GRCh38.index".
 bwa_index
 ^^^^^^^^^
 
+(Optional.)
 This is the *DIRECTORY* containing BWA INDICES.
 
 Example: "/home/kai/genome/GRCh38/BWAIndex/".
@@ -92,6 +103,7 @@ Example: "/home/kai/genome/GRCh38/BWAIndex/".
 star_index
 ^^^^^^^^^^
 
+(Optional.)
 This is the *DIRECTORY* containing STAR INDICES.
 
 Example: "/home/kai/genome/GRCh38/STAR_index/".
@@ -99,6 +111,7 @@ Example: "/home/kai/genome/GRCh38/STAR_index/".
 rsem_index
 ^^^^^^^^^^
 
+(Optional.)
 This is the *DIRECTORY* containing RSEM INDICES.
 
 Example: "/home/kai/genome/GRCh38/RSEM_index/".
