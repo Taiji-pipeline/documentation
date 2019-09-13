@@ -4,14 +4,14 @@ Tutorial
 Introduction
 ------------
 
-The Taiji pipeline aims at integrating different kinds of high throughput
-profiling techniques to construct TF regulatory networks and identify key
-regulators through network analysis. That being said, one only needs
-ATAC-seq or DNase-seq data to run the analysis.
+The Taiji software is a versatile genomics data analysis pipeline.
+It can be used to analyze ATAC-seq, RNA-seq, single cell ATAC-seq and
+Drop-seq data. However, the uniqueness and the power of Taiji really lie in 
+its ability to integrate diverse datasets and use these information in a clever
+way to construct regulatory network and identify candidate driver genes.
 
-The data input to the Taiji pipeline are fastq or bam files.
-For gene expression data, you have the option to provide an external gene
-expression table instead of having the pipeline analyze the raw RNA-seq data for you.
+Taiji accepts many data formats. It can start with raw data like fastq or
+post-processed files like bam or bed files.
 
 How to use
 ----------
@@ -25,21 +25,24 @@ The second configuration file contains the information about the input data sets
 Take a look at :download:`this example file <data/example_input.yml>` or :doc:`input`.
 
 To run the pipeline, supply the ``taiji`` with the first configuration file:
-``taiji run --config example_config.yml`` or ``taiji run --config example_config.yml --remote`` if the program is compiled with ``sge`` flag.
+``taiji run --config example_config.yml``.
 
 Parallelism and distributed computing
 -------------------------------------
 
-Taiji supports two levels of parallelism -- node level and workflow level. Node
-level parallelism is automatically turned on when compiling with the ``drmaa`` flag.
-The workflow level parallelism can be turned on using `-n <num_of_process>`.
-However, this is only recommended for users with a super computer, as it will
-consume a lot of memory.
+Taiji can use multiple cores. For example, to use 5 cores, simply type:
+`taiji run --config config.yml -n 5 +RTS -N5`.
+`-n 5 +RTS -N5` tells the taiji to use 5 cores/threads.
+
+Taiji also supports distributed computing. This feature can be turned on by adding
+the `--cloud` flag. To use this feature, you need to have a job scheduling system like
+SGE or slurm.
 
 Auto-recovery
 -------------
 
-The pipeline supports auto-recovery, which means you can stop the program at any time and it will resume from the last checkpoint.
+The pipeline supports auto-recovery, which means you can stop the program at
+any time and it will resume from the last checkpoint.
 The checkpoints are saved in a file called "sciflow.db".
 Delete this file if you want a fresh run.
 

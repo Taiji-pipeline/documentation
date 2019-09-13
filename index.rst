@@ -10,5 +10,4 @@ Contents:
    tutorial
    options
    input
-   extension
    linux_primer
