@@ -81,6 +81,14 @@ callpeak_fdr
 (Optional.)
 FDR threshold for peak calling in MACS2.
 
+external_network
+^^^^^^^^^^^^^^^^
+
+(Optional.) External network file to be used in PageRank analysis.
+
+.. topic:: Example
+    external_network: "pathway.tsv" 
+
 .. note::
     You don't have to physically provide the following files. But you do need to
     specify the locations where these files will be *GENERATED AUTOMATICALLY WHEN

@@ -16,6 +16,9 @@ post-processed files like bam or bed files.
 How to use
 ----------
 
+Preparing input
+^^^^^^^^^^^^^^^
+
 To run the Taiji pipeline, you would need 2 configuration files.
 
 The first configuration file is used to specify the options used by the pipeline.
@@ -24,18 +27,33 @@ Please look at :download:`this example configuration file <data/example_config.y
 The second configuration file contains the information about the input data sets.
 Take a look at :download:`this example file <data/example_input.yml>` or :doc:`input`.
 
-To run the pipeline, supply the ``taiji`` with the first configuration file:
+Visualizing the workflow
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can use ``taiji view taiji.html`` to generate a HTML output of the workflow.
+Use a web browser to open the file and see what components are included in the
+Taiji pipeline.
+
+Running the workflow
+^^^^^^^^^^^^^^^^^^^^
+
+To run the entire workflow, simply supply the ``taiji`` with the first configuration file:
 ``taiji run --config example_config.yml``.
+
+Oftentimes you just need to run certain steps. For example, if you only want to 
+get some QC metrics, type ``taiji run --config example_config.yml --select SCATAC_QC``.
+You can run multiple steps together using
+``taiji run --config example_config.yml --select STEP1,STEP2,STEP3``.
 
 Parallelism and distributed computing
 -------------------------------------
 
 Taiji can use multiple cores. For example, to use 5 cores, simply type:
-`taiji run --config config.yml -n 5 +RTS -N5`.
-`-n 5 +RTS -N5` tells the taiji to use 5 cores/threads.
+``taiji run --config config.yml -n 5 +RTS -N5``.
+``-n 5 +RTS -N5`` tells the taiji to use 5 cores/threads.
 
 Taiji also supports distributed computing. This feature can be turned on by adding
-the `--cloud` flag. To use this feature, you need to have a job scheduling system like
+the ``--cloud`` flag. To use this feature, you need to have a job scheduling system like
 SGE or slurm.
 
 Auto-recovery
