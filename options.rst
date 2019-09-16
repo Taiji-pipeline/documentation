@@ -27,15 +27,20 @@ Example: "output/".
 assembly
 ^^^^^^^^
 
-(Optional.) The name of genome assembly: "GRCh38", "hg38", "GRCm38" or "mm10".
-The "assembly" is used to download "genome", "annotation" and "motif_file"
+(Optional.) The name of genome assembly (supports "GRCh38", "hg38", "GRCm38" or "mm10").
+The ``assembly`` is used to download ``genome``, ``annotation`` and ``motif_file``
 when the values of these fields are not provided.
+
+Advanced options
+----------------
 
 genome
 ^^^^^^
 
 (Optional.)
 Complete genome in a SINGLE ungzipped FASTA file.
+
+If not specified, this will be downloaded according to ``assembly``.
 
 Example: "/home/kai/genome/GRCh38/genome.fa".
 
@@ -52,6 +57,8 @@ FASTA files. However, since UCSC uses chr1, chr2,... naming convention,
 and ENSEMBL uses 1, 2, ... naming, the ENSEMBL and UCSC FASTA and GTF files
 cannot be mixed together.
 
+If not specified, this will be downloaded according to ``assembly``.
+
 Example: "/home/kai/genome/GRCh38/gencode.v25.annotation.gtf".
 
 motif_file
@@ -64,18 +71,17 @@ the ``TF_NAME`` should match the gene names in your annotation file.
 See these files for examples: :download:`Human <data/motifs/cisBP_human.meme>`
 and :download:`mouse <data/motifs/cisBP_mouse.meme>` motif files.
 
+If not specified, this will be downloaded according to ``assembly``.
+
 Example: "/home/kai/motif_databases/cisBP_human.meme".
 
 callpeak_fdr
 ^^^^^^^^^^^^
 
 (Optional.)
-FDR threshold for peak calling.
+FDR threshold for peak calling in MACS2.
 
-Genome Indices
---------------
-
-.. note:
+.. note::
     You don't have to physically provide the following files. But you do need to
     specify the locations where these files will be *GENERATED AUTOMATICALLY WHEN
     FILES/DIRECTORIES DOES NOT EXIST*. If the specified directories or files
@@ -115,3 +121,40 @@ rsem_index
 This is the *DIRECTORY* containing RSEM INDICES.
 
 Example: "/home/kai/genome/GRCh38/RSEM_index/".
+
+Distributed computing
+---------------------
+
+The following settings are used in the cloud computing mode.
+
+submit_command
+^^^^^^^^^^^^^^
+
+The command for submitting jobs.
+
+.. topic:: Example
+    submit_command: "qsub"
+
+submit_cpu_format
+^^^^^^^^^^^^^^^^^
+
+The command line options for requesting cpu cores.
+
+.. topic:: Example
+    submit_cpu_format: "-l nodes=1:ppn=%d"
+
+submit_memory_format
+^^^^^^^^^^^^^^^^^^^^
+
+The command line options for requesting memory.
+
+.. topic:: Example
+    submit_memory_format: "-l mem=%dG"
+
+submit_params
+^^^^^^^^^^^^^
+
+Additional job submission parameters.
+
+.. topic:: Example
+    submit_params: "-q glean"
