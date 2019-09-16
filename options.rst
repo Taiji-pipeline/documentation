@@ -87,6 +87,7 @@ external_network
 (Optional.) External network file to be used in PageRank analysis.
 
 .. topic:: Example
+
     external_network: "pathway.tsv" 
 
 .. note::
@@ -141,6 +142,7 @@ submit_command
 The command for submitting jobs.
 
 .. topic:: Example
+
     submit_command: "qsub"
 
 submit_cpu_format
@@ -149,6 +151,7 @@ submit_cpu_format
 The command line options for requesting cpu cores.
 
 .. topic:: Example
+
     submit_cpu_format: "-l nodes=1:ppn=%d"
 
 submit_memory_format
@@ -157,6 +160,7 @@ submit_memory_format
 The command line options for requesting memory.
 
 .. topic:: Example
+
     submit_memory_format: "-l mem=%dG"
 
 submit_params
@@ -165,4 +169,5 @@ submit_params
 Additional job submission parameters.
 
 .. topic:: Example
+
     submit_params: "-q glean"
