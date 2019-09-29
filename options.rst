@@ -59,27 +59,50 @@ cannot be mixed together.
 
 If not specified, this will be downloaded according to ``assembly``.
 
-Example: "/home/kai/genome/GRCh38/gencode.v25.annotation.gtf".
+.. topic:: Example
+
+    annotation: "/home/kai/genome/GRCh38/gencode.v25.annotation.gtf"
 
 motif_file
 ^^^^^^^^^^
 
 (Optional.)
-MEME format file containing motifs.
+A plain text file containing PWMs in MEME format.
 The naming convention for motifs is ``TF_NAME+OTHER_STRING``, where
 the ``TF_NAME`` should match the gene names in your annotation file.
-See these files for examples: :download:`Human <data/motifs/cisBP_human.meme>`
+You may include multipe PWMs for same TFs and use ``OTHER_STRING`` to distinguish
+them. For example, ``SP1+ID1``, ``SP1+ID2``.
+Taiji will combine sites found from different PWMs.
+
+We provide human and mouse motifs here (downloaded from cisBP database):
+:download:`Human <data/motifs/cisBP_human.meme>`
 and :download:`mouse <data/motifs/cisBP_mouse.meme>` motif files.
+When ``motif_file`` is not specified, these will be used according to
+the value of the ``assembly`` field.
 
-If not specified, this will be downloaded according to ``assembly``.
+.. topic:: Example
 
-Example: "/home/kai/motif_databases/cisBP_human.meme".
+    motif_file: "/home/kai/motif_databases/cisBP_human.meme"
 
 callpeak_fdr
 ^^^^^^^^^^^^
 
 (Optional.)
 FDR threshold for peak calling in MACS2.
+
+.. topic:: Example
+
+    callpeak_fdr: 0.01
+
+tss_enrichment_cutoff
+^^^^^^^^^^^^^^^^^^^^^
+
+(Optional.)
+TSS enrichment cutoff for filtering cell in single cell ATAC-seq analysis.
+
+.. topic:: Example
+
+    tss_enrichment_cutoff: 7
 
 external_network
 ^^^^^^^^^^^^^^^^
