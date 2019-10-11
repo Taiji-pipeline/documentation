@@ -206,13 +206,13 @@ Specify the computational resources for each step.
 
 .. topic:: Example
 
-::
+    ::
 
-    resource:
-        SCATAC_Remove_Duplicates:
-            parameter: "-q home -l walltime=24:00:00"
+        resource:
+            SCATAC_Remove_Duplicates:
+                parameter: "-q home -l walltime=24:00:00"
 
-        SCATAC_Merged_Reduce_Dims:
-            parameter: "-q home -l walltime=24:00:00"
-            cpu: 4
-            memory: 80
+            SCATAC_Merged_Reduce_Dims:
+                parameter: "-q home -l walltime=24:00:00"
+                cpu: 4
+                memory: 80
