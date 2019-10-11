@@ -10,4 +10,5 @@ Contents:
    tutorial
    options
    input
+   advance
    linux_primer
