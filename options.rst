@@ -154,6 +154,8 @@ This is the *DIRECTORY* containing RSEM INDICES.
 
 Example: "/home/kai/genome/GRCh38/RSEM_index/".
 
+.. _distributed_computing:
+
 Distributed computing
 ---------------------
 
@@ -194,3 +196,22 @@ Additional job submission parameters.
 .. topic:: Example
 
     submit_params: "-q glean"
+
+
+resource
+^^^^^^^^
+
+(Optional.)
+Specify the computational resources for each step.
+
+.. topic:: Example
+
+    ::
+        resource:
+            SCATAC_Remove_Duplicates:
+                parameter: "-q home -l walltime=24:00:00"
+
+            SCATAC_Merged_Reduce_Dims:
+                parameter: "-q home -l walltime=24:00:00"
+                cpu: 4
+                memory: 80

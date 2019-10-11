@@ -54,7 +54,7 @@ Taiji can use multiple cores. For example, to use 5 cores, simply type:
 
 Taiji also supports distributed computing. This feature can be turned on by adding
 the ``--cloud`` flag. To use this feature, you need to have a job scheduling system like
-SGE or slurm.
+SGE or slurm. See :doc:`advance` for more details.
 
 Auto-recovery
 -------------

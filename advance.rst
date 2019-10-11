@@ -31,5 +31,5 @@ If you run the program without distributed computing, you need to use ``+RTS -N1
 specify the number of cores (here we use 10 cores).
 
 Taiji currently supports distributed computing systems like slurm or PBS.
-To use this feature, first add configuration to your ``config.yml`` file.
+To use this feature, first modify your configuration file (see :ref:`distributed_computing`).
 Then this feature can be turned on by ``taiji run --config config.yml --cloud``.
