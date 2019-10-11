@@ -207,6 +207,7 @@ Specify the computational resources for each step.
 .. topic:: Example
 
 ::
+
     resource:
         SCATAC_Remove_Duplicates:
             parameter: "-q home -l walltime=24:00:00"
