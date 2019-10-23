@@ -31,6 +31,12 @@ assembly: "GRCh38"
 
 #rsem_index: "/home/kai/genome/GRCh38/Sequence/RSEM_index/"
 
+#callpeak_fdr: 0.01
+
+#callpeak_genome_size: "hs"
+
+#tss_enrichment_cutoff: 5
+
 ################################################################################
 # Settings for job schedulers
 ################################################################################

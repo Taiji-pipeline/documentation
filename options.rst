@@ -94,13 +94,31 @@ FDR threshold for peak calling in MACS2.
 
     callpeak_fdr: 0.01
 
+callpeak_genome_size
+^^^^^^^^^^^^^^^^^^^^
+
+(Optional.)
+The effective genome size used for MACS2's "-g/--gsize" parameter.
+This will be automatically determined based on the assembly or genome file.
+For human or mouse assembly, we set this parameter to "hs" or "mm".
+For other genome, we set this parameter to ``0.9 * GENOME_SIZE``.
+The value of this parameter usually doesn't make big difference.
+
+Example
+
+::
+
+    callpeak_genome_size: "2.7e9"
+
 tss_enrichment_cutoff
 ^^^^^^^^^^^^^^^^^^^^^
 
 (Optional.)
 TSS enrichment cutoff for filtering cell in single cell ATAC-seq analysis.
 
-.. topic:: Example
+Example
+
+::
 
     tss_enrichment_cutoff: 7
 
