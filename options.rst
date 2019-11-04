@@ -15,14 +15,18 @@ input
 
 The path to a file specifying the input data sets. See :doc:`input` for instructions for creating the input file.
 
-Example: "data/input.yml".
+::
+
+    input: "data/input.yml"
 
 output_dir
 ^^^^^^^^^^
 
 Directory containing the results.
 
-Example: "output/".
+::
+
+    output_dir: "output/"
 
 assembly
 ^^^^^^^^
@@ -30,6 +34,10 @@ assembly
 (Optional.) The name of genome assembly (supports "GRCh38", "hg38", "GRCm38" or "mm10").
 The ``assembly`` is used to download ``genome``, ``annotation`` and ``motif_file``
 when the values of these fields are not provided.
+
+::
+
+    assembly: "GRCh38"
 
 Advanced options
 ----------------
@@ -42,7 +50,9 @@ Complete genome in a SINGLE ungzipped FASTA file.
 
 If not specified, this will be downloaded according to ``assembly``.
 
-Example: "/home/kai/genome/GRCh38/genome.fa".
+::
+
+    genome: "/home/kai/genome/GRCh38/genome.fa"
 
 annotation
 ^^^^^^^^^^
@@ -59,7 +69,7 @@ cannot be mixed together.
 
 If not specified, this will be downloaded according to ``assembly``.
 
-.. topic:: Example
+::
 
     annotation: "/home/kai/genome/GRCh38/gencode.v25.annotation.gtf"
 
@@ -80,7 +90,7 @@ and :download:`mouse <data/motifs/cisBP_mouse.meme>` motif files.
 When ``motif_file`` is not specified, these will be used according to
 the value of the ``assembly`` field.
 
-.. topic:: Example
+::
 
     motif_file: "/home/kai/motif_databases/cisBP_human.meme"
 
@@ -90,7 +100,7 @@ callpeak_fdr
 (Optional.)
 FDR threshold for peak calling in MACS2.
 
-.. topic:: Example
+::
 
     callpeak_fdr: 0.01
 
@@ -104,8 +114,6 @@ For human or mouse assembly, we set this parameter to "hs" or "mm".
 For other genome, we set this parameter to ``0.9 * GENOME_SIZE``.
 The value of this parameter usually doesn't make big difference.
 
-Example
-
 ::
 
     callpeak_genome_size: "2.7e9"
@@ -116,8 +124,6 @@ tss_enrichment_cutoff
 (Optional.)
 TSS enrichment cutoff for filtering cell in single cell ATAC-seq analysis.
 
-Example
-
 ::
 
     tss_enrichment_cutoff: 7
@@ -127,9 +133,18 @@ external_network
 
 (Optional.) External network file to be used in PageRank analysis.
 
-.. topic:: Example
+::
 
     external_network: "pathway.tsv" 
+
+tmp_dir
+^^^^^^^
+
+(Optional.) The directory for storing temporary files.
+
+::
+
+    tmp_dir: "/tmp"
 
 .. note::
     You don't have to physically provide the following files. But you do need to
@@ -146,7 +161,9 @@ seq_index
 (Optional.)
 This is the *FILE* containing GENOME SEQUENCE INDEX.
 
-Example: "/home/kai/genome/GRCh38/GRCh38.index".
+::
+
+    seq_index: "/home/kai/genome/GRCh38/GRCh38.index".
 
 bwa_index
 ^^^^^^^^^
@@ -154,7 +171,9 @@ bwa_index
 (Optional.)
 This is the *DIRECTORY* containing BWA INDICES.
 
-Example: "/home/kai/genome/GRCh38/BWAIndex/".
+::
+
+    bwa_index: "/home/kai/genome/GRCh38/BWAIndex/"
 
 star_index
 ^^^^^^^^^^
@@ -162,7 +181,9 @@ star_index
 (Optional.)
 This is the *DIRECTORY* containing STAR INDICES.
 
-Example: "/home/kai/genome/GRCh38/STAR_index/".
+::
+
+    star_index: "/home/kai/genome/GRCh38/STAR_index/"
 
 rsem_index
 ^^^^^^^^^^
@@ -170,7 +191,9 @@ rsem_index
 (Optional.)
 This is the *DIRECTORY* containing RSEM INDICES.
 
-Example: "/home/kai/genome/GRCh38/RSEM_index/".
+::
+
+    rsem_index: "/home/kai/genome/GRCh38/RSEM_index/"
 
 .. _distributed_computing:
 
@@ -184,7 +207,7 @@ submit_command
 
 The command for submitting jobs.
 
-.. topic:: Example
+::
 
     submit_command: "qsub"
 
@@ -193,7 +216,7 @@ submit_cpu_format
 
 The command line options for requesting cpu cores.
 
-.. topic:: Example
+::
 
     submit_cpu_format: "-l nodes=1:ppn=%d"
 
@@ -202,7 +225,7 @@ submit_memory_format
 
 The command line options for requesting memory.
 
-.. topic:: Example
+::
 
     submit_memory_format: "-l mem=%dG"
 
@@ -211,7 +234,7 @@ submit_params
 
 Additional job submission parameters.
 
-.. topic:: Example
+::
 
     submit_params: "-q glean"
 
@@ -222,15 +245,13 @@ resource
 (Optional.)
 Specify the computational resources for each step.
 
-.. topic:: Example
+::
 
-    ::
+    resource:
+        SCATAC_Remove_Duplicates:
+            parameter: "-q home -l walltime=24:00:00"
 
-        resource:
-            SCATAC_Remove_Duplicates:
-                parameter: "-q home -l walltime=24:00:00"
-
-            SCATAC_Merged_Reduce_Dims:
-                parameter: "-q home -l walltime=24:00:00"
-                cpu: 4
-                memory: 80
+        SCATAC_Merged_Reduce_Dims:
+            parameter: "-q home -l walltime=24:00:00"
+            cpu: 4
+            memory: 80
