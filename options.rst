@@ -31,9 +31,13 @@ Directory containing the results.
 assembly
 ^^^^^^^^
 
-(Optional.) The name of genome assembly (supports "GRCh38", "hg38", "GRCm38" or "mm10").
-The ``assembly`` is used to download ``genome``, ``annotation`` and ``motif_file``
-when the values of these fields are not provided.
+(Optional.) The name of the genome assembly. This is an optional parameter.
+We use this parameter to automatically determine the values of ``genome``, ``annotation``
+and ``motif_file``.
+If your genome assembly is not supported by the program, you will need to mannually
+set the parameters for ``genome``, ``annotation`` and ``motif_file``.
+
+We currently support the following assemblies: "GRCh38", "hg38", "GRCm38" or "mm10".
 
 ::
 
@@ -94,6 +98,76 @@ the value of the ``assembly`` field.
 
     motif_file: "/home/kai/motif_databases/cisBP_human.meme"
 
+seq_index
+^^^^^^^^^
+
+(Optional.)
+This is the *FILE* containing GENOME SEQUENCE INDEX.
+The program will detect whether the file exists.
+If the index is not present, it will generate the index at the specified location.
+If you leave this parameter unspecified,
+the program will generate the index in the ``output_dir``.
+
+To avoid re-generate the index for every project, we recommend you to set
+this parameter mannually.
+
+::
+
+    seq_index: "/home/kai/genome/GRCh38/GRCh38.index".
+
+
+bwa_index
+^^^^^^^^^
+
+(Optional.)
+This is the *DIRECTORY* containing BWA INDICES.
+The program will detect whether the directory contain proper BWA indices.
+If the indices are not present, it will generate the indices within the specified
+directory. If you leave this parameter unspecified,
+the program will generate the indices in the ``output_dir``.
+
+To avoid re-generate the indices for every project, we recommend you to set
+this parameter mannually.
+
+::
+
+    bwa_index: "/home/kai/genome/GRCh38/BWAIndex/"
+
+star_index
+^^^^^^^^^^
+
+(Optional.)
+This is the *DIRECTORY* containing STAR INDICES.
+The program will detect whether the directory contain proper STAR indices.
+If the indices are not present, it will generate the indices within the specified
+directory. If you leave this parameter unspecified,
+the program will generate the indices in the ``output_dir``.
+
+To avoid re-generate the indices for every project, we recommend you to set
+this parameter mannually.
+
+::
+
+    star_index: "/home/kai/genome/GRCh38/STAR_index/"
+
+rsem_index
+^^^^^^^^^^
+
+(Optional.)
+This is the *DIRECTORY* containing RSEM INDICES.
+The program will detect whether the directory contain proper RSEM indices.
+If the indices are not present, it will generate the indices within the specified
+directory. If you leave this parameter unspecified,
+the program will generate the indices in the ``output_dir``.
+
+To avoid re-generate the indices for every project, we recommend you to set
+this parameter mannually.
+
+::
+
+    rsem_index: "/home/kai/genome/GRCh38/RSEM_index/"
+
+
 callpeak_fdr
 ^^^^^^^^^^^^
 
@@ -145,55 +219,6 @@ tmp_dir
 ::
 
     tmp_dir: "/tmp"
-
-.. note::
-    You don't have to physically provide the following files. But you do need to
-    specify the locations where these files will be *GENERATED AUTOMATICALLY WHEN
-    FILES/DIRECTORIES DOES NOT EXIST*. If the specified directories or files
-    already exist, the program will do nothing.
-    If this is the first time you run the program, make sure delete existing
-    files/directories first so indices can be generated properly.
-    You only need to generate the indices once, *THEY CAN BE REUSED*.
-
-seq_index
-^^^^^^^^^
-
-(Optional.)
-This is the *FILE* containing GENOME SEQUENCE INDEX.
-
-::
-
-    seq_index: "/home/kai/genome/GRCh38/GRCh38.index".
-
-bwa_index
-^^^^^^^^^
-
-(Optional.)
-This is the *DIRECTORY* containing BWA INDICES.
-
-::
-
-    bwa_index: "/home/kai/genome/GRCh38/BWAIndex/"
-
-star_index
-^^^^^^^^^^
-
-(Optional.)
-This is the *DIRECTORY* containing STAR INDICES.
-
-::
-
-    star_index: "/home/kai/genome/GRCh38/STAR_index/"
-
-rsem_index
-^^^^^^^^^^
-
-(Optional.)
-This is the *DIRECTORY* containing RSEM INDICES.
-
-::
-
-    rsem_index: "/home/kai/genome/GRCh38/RSEM_index/"
 
 .. _distributed_computing:
 
