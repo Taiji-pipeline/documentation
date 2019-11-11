@@ -19,6 +19,8 @@ Supported input data types are listed below:
 ATAC-seq
 --------
 
+Keyword: ``ATAC-seq``.
+
 +-------------------+---------------+---------------+---------------------------+
 | Supported formats | Description   | Required tags | Optional tags             |
 +===================+===============+===============+===========================+
@@ -58,6 +60,8 @@ OR in TSV format:
 RNA-seq
 -------
 
+Keyword: ``RNA-seq``.
+
 +-------------------+---------------+------------------------+--------------+
 | Supported formats | Description   | Required tags          | Optional tags|
 +===================+===============+========================+==============+
@@ -78,8 +82,21 @@ the expression levels. For example:
     Gene2 <TAB> 20
     Gene3 <TAB> 25
 
+Single cell RNA-seq
+-------------------
+
+Keyword: ``scRNA-seq``.
+
++-------------------+---------------+------------------------+--------------+
+| Supported formats | Description   | Required tags          | Optional tags|
++===================+===============+========================+==============+
+| ``*.fastq.gz``    | Raw reads     | None                   | None         |
++-------------------+---------------+------------------------+--------------+
+
 HiC
 ---
+
+Keyword: ``HiC``.
 
 +-------------------+-----------------+----------------+--------------+
 | Supported formats | Description     | Required tags  | Optional tags|
@@ -101,8 +118,8 @@ For example:
     chr21 <TAB> 29343 <TAB> 500000 <TAB> chr21 <TAB> 1009340 <TAB> 1023400
     chr1  <TAB> 10321 <TAB> 102100 <TAB> chr1  <TAB> 107150  <TAB> 123400
 
-Data in the internet
----------------------
+Data from the internet
+----------------------
 
 Taiji can automatically download and analyze data from ENCODE portal and GEO database.
 
