@@ -220,6 +220,37 @@ tmp_dir
 
     tmp_dir: "/tmp"
 
+Single cell RNA-seq
+-------------------
+
+scrna_cell_barcode_length
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The length of the cell barcode used in demultiplexing.
+
+::
+
+    scrna_cell_barcode_length: 12
+
+scrna_umi_length
+^^^^^^^^^^^^^^^^
+
+The length of the UMI used in demultiplexing.
+
+::
+
+    scrna_umi_length: 8
+
+scrna_doublet_score_cutoff
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+(Optional.) Cutoff for doublet detection, a value between 0 and 1 reflecting
+how likely a "cell" is a doublet. (default is 0.5)
+
+::
+
+    scrna_doublet_score_cutoff: 0.5
+
 .. _distributed_computing:
 
 Distributed computing
