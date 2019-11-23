@@ -220,8 +220,35 @@ tmp_dir
 
     tmp_dir: "/tmp"
 
-Single cell RNA-seq
--------------------
+Single cell analysis
+--------------------
+
+cluster_resolution
+^^^^^^^^^^^^^^^^^^
+
+::
+
+    cluster_resolution: 1
+
+cluster_optimizer
+^^^^^^^^^^^^^^^^^
+
+(Optional.) Quality function used in graph clustering. Available options are `RBConfiguration` and `CPM`.
+`RBConfiguration` optimizes modularity and has resolution limit while
+`CPM` is resolution-limit free.
+
+::
+
+    cluster_optimizer: CPM
+
+scatac_fragment_cutoff
+^^^^^^^^^^^^^^^^^^^^^^
+
+(Optional.) Used to remove cells that do not have enough fragments/reads.
+
+::
+
+    scatac_fragment_cutoff: 1000
 
 scrna_cell_barcode_length
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -250,6 +277,8 @@ how likely a "cell" is a doublet. (default is 0.5)
 ::
 
     scrna_doublet_score_cutoff: 0.5
+
+
 
 .. _distributed_computing:
 
