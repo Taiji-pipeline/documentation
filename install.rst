@@ -14,11 +14,6 @@ OR use the command below:
 
     curl -Lk https://www.stackage.org/stack/linux-x86_64 | tar xz --strip-components=1 -C /usr/bin
 
-.. note::
-    Older Linux distribution may still use ``libgmp4``, i.e, Centos 6.x.
-    If that is the case, you need to download the version compiled with ``libgmp4``.
-    For example, something like "Linux 64-bit, libgmp4 for CentOS 6.x".
-
 Download Taiji source and install GHC
 -------------------------------------
 
