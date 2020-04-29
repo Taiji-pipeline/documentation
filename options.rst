@@ -120,10 +120,10 @@ bwa_index
 ^^^^^^^^^
 
 (Optional.)
-This is the *DIRECTORY* containing BWA INDICES.
+BWA genome index prefix.
 The program will detect whether the directory contain proper BWA indices.
-If the indices are not present, it will generate the indices within the specified
-directory. If you leave this parameter unspecified,
+If the indices are not present, it will generate the indices at the specified
+location. If you leave this parameter unspecified,
 the program will generate the indices in the ``output_dir``.
 
 To avoid re-generate the indices for every project, we recommend you to set
@@ -131,7 +131,7 @@ this parameter mannually.
 
 ::
 
-    bwa_index: "/home/kai/genome/GRCh38/BWAIndex/"
+    bwa_index: "/home/kai/genome/GRCh38/BWAIndex/genome.fa"
 
 star_index
 ^^^^^^^^^^
@@ -154,10 +154,10 @@ rsem_index
 ^^^^^^^^^^
 
 (Optional.)
-This is the *DIRECTORY* containing RSEM INDICES.
+RSEM genome index prefix.
 The program will detect whether the directory contain proper RSEM indices.
-If the indices are not present, it will generate the indices within the specified
-directory. If you leave this parameter unspecified,
+If the indices are not present, it will generate the indices at the specified
+location. If you leave this parameter unspecified,
 the program will generate the indices in the ``output_dir``.
 
 To avoid re-generate the indices for every project, we recommend you to set
@@ -165,7 +165,7 @@ this parameter mannually.
 
 ::
 
-    rsem_index: "/home/kai/genome/GRCh38/RSEM_index/"
+    rsem_index: "/home/kai/genome/GRCh38/RSEM_index/genome"
 
 
 callpeak_fdr

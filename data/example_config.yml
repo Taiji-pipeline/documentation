@@ -11,13 +11,14 @@ input: "example_input.yml"
 
 output_dir: "output/"
 
+# Optional if `genome`, `annotation` and `motif_file` are set.
 assembly: "GRCh38"
 
 ################################################################################
 # Advanced settings
 ################################################################################
 
-#genome: "/home/kai/genome/GRCh38/Sequence/BWAIndex/genome.fa"
+#genome: "/home/kai/genome/GRCh38/Sequence/genome.fa"
 
 #annotation: "/home/kai/genome/GRCh38/Annotation/gencode.v25.annotation.gtf"
 
@@ -25,11 +26,11 @@ assembly: "GRCh38"
 
 #genome_index: "/home/kai/genome/GRCh38/Sequence/GRCh38.index"
 
-#bwa_index: "/home/kai/genome/GRCh38/Sequence/BWAIndex/"
+#bwa_index: "/home/kai/genome/GRCh38/Sequence/BWAIndex/genome.fa"
 
 #star_index: "/home/kai/genome/GRCh38/Sequence/STAR_index/"
 
-#rsem_index: "/home/kai/genome/GRCh38/Sequence/RSEM_index/"
+#rsem_index: "/home/kai/genome/GRCh38/Sequence/RSEM_index/genome"
 
 #callpeak_fdr: 0.01
 
