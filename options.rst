@@ -98,11 +98,11 @@ the value of the ``assembly`` field.
 
     motif_file: "/home/kai/motif_databases/cisBP_human.meme"
 
-seq_index
-^^^^^^^^^
+genome_index
+^^^^^^^^^^^^
 
 (Optional.)
-This is the *FILE* containing GENOME SEQUENCE INDEX.
+This is the *FILE* containing customized genome sequence index.
 The program will detect whether the file exists.
 If the index is not present, it will generate the index at the specified location.
 If you leave this parameter unspecified,
@@ -113,7 +113,7 @@ this parameter mannually.
 
 ::
 
-    seq_index: "/home/kai/genome/GRCh38/GRCh38.index".
+    genome_index: "/home/kai/genome/GRCh38/GRCh38.index".
 
 
 bwa_index
