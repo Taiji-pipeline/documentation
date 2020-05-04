@@ -334,7 +334,7 @@ Additional parameters to be included in the submission command.
     submit_params: "-q glean"
 
 
-.. job-resource:
+.. _job-resource:
 
 resource
 ^^^^^^^^
