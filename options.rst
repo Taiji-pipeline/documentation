@@ -299,7 +299,12 @@ The command for submitting jobs.
 submit_cpu_format
 ^^^^^^^^^^^^^^^^^
 
-The command line options for requesting cpu cores.
+The template for specifying the number of cpu cores in the job submission script.
+This is system/environment dependent. 
+For example, if your system uses `-l nodes=1:ppn=XX` to allocate CPU resource,
+you should put `-l nodes=1:ppn=%d` here.
+The `%d` will be replaced by the actual numbers when submitting the jobs.
+The CPU cores for individual steps can be modified in the `Resource` section below.
 
 ::
 
@@ -308,7 +313,12 @@ The command line options for requesting cpu cores.
 submit_memory_format
 ^^^^^^^^^^^^^^^^^^^^
 
-The command line options for requesting memory.
+The template for specifying the amount of memory in the job submission script.
+This is system/environment dependent. 
+For example, if your system uses `-l mem=XXG` to allocate memory resource,
+you should put `-l mem=%dG` here.
+The `%d` will be replaced by the actual numbers when submitting the jobs.
+The memory for individual steps can be modified in the `Resource` section below.
 
 ::
 
@@ -317,7 +327,7 @@ The command line options for requesting memory.
 submit_params
 ^^^^^^^^^^^^^
 
-Additional job submission parameters.
+Additional parameters to be included in the submission command.
 
 ::
 
