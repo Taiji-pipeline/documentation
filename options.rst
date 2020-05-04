@@ -301,10 +301,10 @@ submit_cpu_format
 
 The template for specifying the number of cpu cores in the job submission script.
 This is system/environment dependent. 
-For example, if your system uses `-l nodes=1:ppn=XX` to allocate CPU resource,
-you should put `-l nodes=1:ppn=%d` here.
-The `%d` will be replaced by the actual numbers when submitting the jobs.
-The CPU cores for individual steps can be modified in the `Resource` section below.
+For example, if your system uses ``-l nodes=1:ppn=XX`` to allocate CPU resource,
+you should put ``-l nodes=1:ppn=%d`` here.
+The ``%d`` will be replaced by the actual numbers when submitting the jobs.
+The CPU cores for individual steps can be modified in the :ref:`job-resource` section below.
 
 ::
 
@@ -315,10 +315,10 @@ submit_memory_format
 
 The template for specifying the amount of memory in the job submission script.
 This is system/environment dependent. 
-For example, if your system uses `-l mem=XXG` to allocate memory resource,
-you should put `-l mem=%dG` here.
-The `%d` will be replaced by the actual numbers when submitting the jobs.
-The memory for individual steps can be modified in the `Resource` section below.
+For example, if your system uses ``-l mem=XXG`` to allocate memory resource,
+you should put ``-l mem=%dG`` here.
+The ``%d`` will be replaced by the actual numbers when submitting the jobs.
+The memory for individual steps can be modified in the :ref:`job-resource` section below.
 
 ::
 
@@ -333,6 +333,8 @@ Additional parameters to be included in the submission command.
 
     submit_params: "-q glean"
 
+
+.. job-resource:
 
 resource
 ^^^^^^^^
