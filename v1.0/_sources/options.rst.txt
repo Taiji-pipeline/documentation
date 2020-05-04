@@ -1,0 +1,342 @@
+Configuration
+=============
+
+To get started, modify the example file below:
+
+* :download:`example configuration file <data/example_config.yml>`.
+
+See sections below for explainations of each field.
+
+Basic options
+-------------
+
+input
+^^^^^
+
+The path to a file specifying the input data sets. See :doc:`input` for instructions for creating the input file.
+
+::
+
+    input: "data/input.yml"
+
+output_dir
+^^^^^^^^^^
+
+Directory containing the results.
+
+::
+
+    output_dir: "output/"
+
+assembly
+^^^^^^^^
+
+(Optional.) The name of the genome assembly. This is an optional parameter.
+We use this parameter to automatically determine the values of ``genome``, ``annotation``
+and ``motif_file``.
+If your genome assembly is not supported by the program, you will need to mannually
+set the parameters for ``genome``, ``annotation`` and ``motif_file``.
+
+We currently support the following assemblies: "GRCh38", "hg38", "GRCm38" or "mm10".
+
+::
+
+    assembly: "GRCh38"
+
+Advanced options
+----------------
+
+genome
+^^^^^^
+
+(Optional.)
+Complete genome in a SINGLE ungzipped FASTA file.
+
+If not specified, this will be downloaded according to ``assembly``.
+
+::
+
+    genome: "/home/kai/genome/GRCh38/genome.fa"
+
+annotation
+^^^^^^^^^^
+
+(Optional.)
+Genome annotation in *GTF* format. For human and mouse, Gencode annotations
+are available at http://www.gencodegenes.org/.
+*Very important*: chromosome names in the annotations GTF file have to match
+chromosome names in the FASTA genome sequence file. For example, one can use
+ENSEMBL FASTA files with ENSEMBL GTF files, and UCSC FASTA files with UCSC
+FASTA files. However, since UCSC uses chr1, chr2,... naming convention,
+and ENSEMBL uses 1, 2, ... naming, the ENSEMBL and UCSC FASTA and GTF files
+cannot be mixed together.
+
+If not specified, this will be downloaded according to ``assembly``.
+
+::
+
+    annotation: "/home/kai/genome/GRCh38/gencode.v25.annotation.gtf"
+
+motif_file
+^^^^^^^^^^
+
+(Optional.)
+A plain text file containing PWMs in MEME format.
+The naming convention for motifs is ``TF_NAME+OTHER_STRING``, where
+the ``TF_NAME`` should match the gene names in your annotation file.
+You may include multipe PWMs for same TFs and use ``OTHER_STRING`` to distinguish
+them. For example, ``SP1+ID1``, ``SP1+ID2``.
+Taiji will combine sites found from different PWMs.
+
+We provide human and mouse motifs here (downloaded from cisBP database):
+:download:`Human <data/motifs/cisBP_human.meme>`
+and :download:`mouse <data/motifs/cisBP_mouse.meme>` motif files.
+When ``motif_file`` is not specified, these will be used according to
+the value of the ``assembly`` field.
+
+::
+
+    motif_file: "/home/kai/motif_databases/cisBP_human.meme"
+
+seq_index
+^^^^^^^^^
+
+(Optional.)
+This is the *FILE* containing GENOME SEQUENCE INDEX.
+The program will detect whether the file exists.
+If the index is not present, it will generate the index at the specified location.
+If you leave this parameter unspecified,
+the program will generate the index in the ``output_dir``.
+
+To avoid re-generate the index for every project, we recommend you to set
+this parameter mannually.
+
+::
+
+    seq_index: "/home/kai/genome/GRCh38/GRCh38.index".
+
+
+bwa_index
+^^^^^^^^^
+
+(Optional.)
+This is the *DIRECTORY* containing BWA INDICES.
+The program will detect whether the directory contain proper BWA indices.
+If the indices are not present, it will generate the indices within the specified
+directory. If you leave this parameter unspecified,
+the program will generate the indices in the ``output_dir``.
+
+To avoid re-generate the indices for every project, we recommend you to set
+this parameter mannually.
+
+::
+
+    bwa_index: "/home/kai/genome/GRCh38/BWAIndex/"
+
+star_index
+^^^^^^^^^^
+
+(Optional.)
+This is the *DIRECTORY* containing STAR INDICES.
+The program will detect whether the directory contain proper STAR indices.
+If the indices are not present, it will generate the indices within the specified
+directory. If you leave this parameter unspecified,
+the program will generate the indices in the ``output_dir``.
+
+To avoid re-generate the indices for every project, we recommend you to set
+this parameter mannually.
+
+::
+
+    star_index: "/home/kai/genome/GRCh38/STAR_index/"
+
+rsem_index
+^^^^^^^^^^
+
+(Optional.)
+This is the *DIRECTORY* containing RSEM INDICES.
+The program will detect whether the directory contain proper RSEM indices.
+If the indices are not present, it will generate the indices within the specified
+directory. If you leave this parameter unspecified,
+the program will generate the indices in the ``output_dir``.
+
+To avoid re-generate the indices for every project, we recommend you to set
+this parameter mannually.
+
+::
+
+    rsem_index: "/home/kai/genome/GRCh38/RSEM_index/"
+
+
+callpeak_fdr
+^^^^^^^^^^^^
+
+(Optional.)
+FDR threshold for peak calling in MACS2.
+
+::
+
+    callpeak_fdr: 0.01
+
+callpeak_genome_size
+^^^^^^^^^^^^^^^^^^^^
+
+(Optional.)
+The effective genome size used for MACS2's "-g/--gsize" parameter.
+This will be automatically determined based on the assembly or genome file.
+For human or mouse assembly, we set this parameter to "hs" or "mm".
+For other genome, we set this parameter to ``0.9 * GENOME_SIZE``.
+The value of this parameter usually doesn't make big difference.
+
+::
+
+    callpeak_genome_size: "2.7e9"
+
+tss_enrichment_cutoff
+^^^^^^^^^^^^^^^^^^^^^
+
+(Optional.)
+TSS enrichment cutoff for filtering cell in single cell ATAC-seq analysis.
+
+::
+
+    tss_enrichment_cutoff: 7
+
+external_network
+^^^^^^^^^^^^^^^^
+
+(Optional.) External network file to be used in PageRank analysis.
+
+::
+
+    external_network: "pathway.tsv" 
+
+tmp_dir
+^^^^^^^
+
+(Optional.) The directory for storing temporary files.
+
+::
+
+    tmp_dir: "/tmp"
+
+Single cell analysis
+--------------------
+
+cluster_resolution
+^^^^^^^^^^^^^^^^^^
+
+::
+
+    cluster_resolution: 1
+
+cluster_optimizer
+^^^^^^^^^^^^^^^^^
+
+(Optional.) Quality function used in graph clustering. Available options are `RBConfiguration` and `CPM`.
+`RBConfiguration` optimizes modularity and has resolution limit while
+`CPM` is resolution-limit free.
+
+::
+
+    cluster_optimizer: CPM
+
+scatac_fragment_cutoff
+^^^^^^^^^^^^^^^^^^^^^^
+
+(Optional.) Used to remove cells that do not have enough fragments/reads.
+
+::
+
+    scatac_fragment_cutoff: 1000
+
+scrna_cell_barcode_length
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The length of the cell barcode used in demultiplexing.
+
+::
+
+    scrna_cell_barcode_length: 12
+
+scrna_umi_length
+^^^^^^^^^^^^^^^^
+
+The length of the UMI used in demultiplexing.
+
+::
+
+    scrna_umi_length: 8
+
+scrna_doublet_score_cutoff
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+(Optional.) Cutoff for doublet detection, a value between 0 and 1 reflecting
+how likely a "cell" is a doublet. (default is 0.5)
+
+::
+
+    scrna_doublet_score_cutoff: 0.5
+
+
+
+.. _distributed_computing:
+
+Distributed computing
+---------------------
+
+The following settings are used in the cloud computing mode.
+
+submit_command
+^^^^^^^^^^^^^^
+
+The command for submitting jobs.
+
+::
+
+    submit_command: "qsub"
+
+submit_cpu_format
+^^^^^^^^^^^^^^^^^
+
+The command line options for requesting cpu cores.
+
+::
+
+    submit_cpu_format: "-l nodes=1:ppn=%d"
+
+submit_memory_format
+^^^^^^^^^^^^^^^^^^^^
+
+The command line options for requesting memory.
+
+::
+
+    submit_memory_format: "-l mem=%dG"
+
+submit_params
+^^^^^^^^^^^^^
+
+Additional job submission parameters.
+
+::
+
+    submit_params: "-q glean"
+
+
+resource
+^^^^^^^^
+
+(Optional.)
+Specify the computational resources for each step.
+
+::
+
+    resource:
+        SCATAC_Remove_Duplicates:
+            parameter: "-q home -l walltime=24:00:00"
+
+        SCATAC_Merged_Reduce_Dims:
+            parameter: "-q home -l walltime=24:00:00"
+            cpu: 4
+            memory: 80

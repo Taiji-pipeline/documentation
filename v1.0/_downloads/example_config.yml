@@ -1,0 +1,69 @@
+################################################################################
+# The meaning of each field is explained at:
+# https://taiji-pipeline.github.io/documentation/options.html
+################################################################################
+
+################################################################################
+# Minimal settings
+################################################################################
+
+input: "example_input.yml"
+
+output_dir: "output/"
+
+assembly: "GRCh38"
+
+################################################################################
+# Advanced settings
+################################################################################
+
+#genome: "/home/kai/genome/GRCh38/Sequence/BWAIndex/genome.fa"
+
+#annotation: "/home/kai/genome/GRCh38/Annotation/gencode.v25.annotation.gtf"
+
+#motif_file: "/home/kai/motif_databases/cisBP_human.meme"
+
+#genome_index: "/home/kai/genome/GRCh38/Sequence/GRCh38.index"
+
+#bwa_index: "/home/kai/genome/GRCh38/Sequence/BWAIndex/"
+
+#star_index: "/home/kai/genome/GRCh38/Sequence/STAR_index/"
+
+#rsem_index: "/home/kai/genome/GRCh38/Sequence/RSEM_index/"
+
+#callpeak_fdr: 0.01
+
+#callpeak_genome_size: "hs"
+
+#tss_enrichment_cutoff: 5
+
+################################################################################
+# Settings for job schedulers
+################################################################################
+
+# Example settings for SGE
+
+#submit_params: "-q glean"
+#submit_command: "qsub"
+#submit_cpu_format: "-l nodes=1:ppn=%d"
+#submit_memory_format: "-l mem=%dG"
+
+# Example settings for slurm
+
+#submit_params: "-p glean"
+#submit_command: "sbatch"
+#submit_cpu_format: "--ntasks-per-node=%d"
+#submit_memory_format: "--mem=%d000"
+
+################################################################################
+# Computing resource settings
+################################################################################
+
+#resource:
+#  SCATAC_Remove_Duplicates:
+#    parameter: "-q home -l walltime=24:00:00"
+
+#  SCATAC_Merged_Reduce_Dims:
+#    parameter: "-q home-ren -l walltime=24:00:00"
+#    cpu: 4
+#    memory: 80
