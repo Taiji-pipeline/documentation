@@ -27,7 +27,7 @@ Keyword: ``ATAC-seq``.
 | ``*.fastq`` or    | Raw reads     | None          | None                      |
 | ``*.fastq.gz``    |               |               |                           |
 +-------------------+---------------+---------------+---------------------------+
-| ``*.bam``         | Aligned reads | None          | "filtered": do not further|
+| ``*.bam``         | Aligned reads | None          | "Filtered": do not further|
 |                   |               |               | filter this file          |
 +-------------------+---------------+---------------+---------------------------+
 | ``*.bed`` or      | Aligned reads | None          |                           |

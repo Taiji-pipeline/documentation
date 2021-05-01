@@ -133,6 +133,15 @@ this parameter mannually.
 
     bwa_index: "/home/kai/genome/GRCh38/BWAIndex/genome.fa"
 
+bwa_seed_length
+^^^^^^^^^^^^^^^
+
+The "-k" parameter in BWA -- minimum seed length.
+
+::
+
+    bwa_seed_length: 32
+
 star_index
 ^^^^^^^^^^
 
@@ -192,16 +201,6 @@ The value of this parameter usually doesn't make big difference.
 
     callpeak_genome_size: "2.7e9"
 
-tss_enrichment_cutoff
-^^^^^^^^^^^^^^^^^^^^^
-
-(Optional.)
-TSS enrichment cutoff for filtering cell in single cell ATAC-seq analysis.
-
-::
-
-    tss_enrichment_cutoff: 7
-
 external_network
 ^^^^^^^^^^^^^^^^
 
@@ -220,15 +219,51 @@ tmp_dir
 
     tmp_dir: "/tmp"
 
-Single cell analysis
---------------------
 
-cluster_resolution
-^^^^^^^^^^^^^^^^^^
+Single cell ATAC-seq analysis
+-----------------------------
+
+Parameters related to scATAC-seq analysis. All parameters in this section
+should be specified under `scatac_options`. For example:
 
 ::
 
-    cluster_resolution: 1
+    scatac_options:
+
+
+tss_enrichment_cutoff
+^^^^^^^^^^^^^^^^^^^^^
+
+(Optional.)
+TSS enrichment cutoff for filtering cell in single cell ATAC-seq analysis.
+
+::
+
+    tss_enrichment_cutoff: 7
+
+
+fragment_cutoff
+^^^^^^^^^^^^^^^
+
+(Optional.) Used to remove cells that do not have enough fragments/reads.
+
+::
+
+    fragment_cutoff: 1000
+
+doublet_score_cutoff
+^^^^^^^^^^^^^^^^^^^^
+
+::
+    doublet_score_cutoff: 0.5
+
+cell_barcode_length
+^^^^^^^^^^^^^^^^^^^
+
+(Optional.)
+
+::
+    cell_barcode_length: 10
 
 cluster_optimizer
 ^^^^^^^^^^^^^^^^^
@@ -241,14 +276,57 @@ cluster_optimizer
 
     cluster_optimizer: CPM
 
-scatac_fragment_cutoff
-^^^^^^^^^^^^^^^^^^^^^^
+cluster_resolution
+^^^^^^^^^^^^^^^^^^
 
-(Optional.) Used to remove cells that do not have enough fragments/reads.
+Mannually specify the clustering resolution. Otherwise it will be automatically determined.
 
 ::
 
-    scatac_fragment_cutoff: 1000
+    cluster_resolution: 1
+
+cluster_resolution_list
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    cluster_resolution_list: [0.005, 0.01, 0.02, 0.04, 0.08, 0.16, 0.32, 0.64, 0.8, 1]
+
+cluster_by_window
+^^^^^^^^^^^^^^^^^
+
+Whether to use bin/window based clustering. Default is to use peak based clustering.
+
+::
+    cluster_by_window: False
+
+window_size
+^^^^^^^^^^^
+
+Window/bin size.
+
+::
+    window_size: 5000
+
+
+do_subclustering
+^^^^^^^^^^^^^^^^
+
+Whether to perform iterative clustering to identify subclusters.
+
+::
+    do_subclustering: False
+
+subcluster_resolution    
+^^^^^^^^^^^^^^^^^^^^^
+
+
+cluster_exclude
+^^^^^^^^^^^^^^^
+
+
+Single cell RNA-seq analysis
+-----------------------------
 
 scrna_cell_barcode_length
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -278,6 +356,8 @@ how likely a "cell" is a doublet. (default is 0.5)
 
     scrna_doublet_score_cutoff: 0.5
 
+scrna_cluster_resolutions
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. _distributed_computing:
