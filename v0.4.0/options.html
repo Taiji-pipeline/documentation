@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Configuration &mdash; Taiji 0.4.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.4.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Input data format" href="input.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Taiji
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Compile from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-files">Example files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-options">Basic options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input">input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-dir">output_dir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#picard">picard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#genome">genome</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#annotation">annotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#motif-file">motif_file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#genome-indices">Genome Indices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#seq-index">seq_index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bwa-index">bwa_index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#star-index">star_index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rsem-index">rsem_index</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">Input data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_primer.html">Linux Primer</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Taiji</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-files">
+<h2>Example files<a class="headerlink" href="#example-files" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference download internal" href="_downloads/example_config.yml" download=""><code class="xref download docutils literal"><span class="pre">example</span> <span class="pre">configuration</span> <span class="pre">file</span></code></a>.</li>
+<li><a class="reference download internal" href="_downloads/example_input.yml" download=""><code class="xref download docutils literal"><span class="pre">example</span> <span class="pre">input</span> <span class="pre">file</span></code></a>.</li>
+</ul>
+</div>
+<div class="section" id="basic-options">
+<h2>Basic options<a class="headerlink" href="#basic-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="input">
+<h3>input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h3>
+<p>The path to a file specifying the input data sets. The software come with
+an example file named &#8220;input.yaml&#8221;.</p>
+<p>Example: &#8220;data/input.yml&#8221;.</p>
+</div>
+<div class="section" id="output-dir">
+<h3>output_dir<a class="headerlink" href="#output-dir" title="Permalink to this headline">¶</a></h3>
+<p>Directory containing the results.</p>
+<p>Example: &#8220;output/&#8221;.</p>
+</div>
+<div class="section" id="picard">
+<h3>picard<a class="headerlink" href="#picard" title="Permalink to this headline">¶</a></h3>
+<p>The path to the picard tools.</p>
+<p>Example: &#8220;/home/kai/software/picard-tools-1.140/picard.jar&#8221;.</p>
+</div>
+<div class="section" id="genome">
+<h3>genome<a class="headerlink" href="#genome" title="Permalink to this headline">¶</a></h3>
+<p>Complete genome in a SINGLE plain FASTA file. Genome can be downloaded from
+Gencode (human and mouse), UCSC or ENSEMBL.
+Example link for human:
+<a class="reference external" href="http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz">http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz</a>.
+<em>Important</em>: Remember to ungzip the file using &#8220;gzip -d hg38.fa.gz&#8221;!
+Tip: To make a single genome file from multiple fastq files, execute:
+<cite>cat chr1.fa chr2.fa chr3.fa &gt; genome.fa</cite></p>
+<p>Example: &#8220;/home/kai/genome/GRCh38/genome.fa&#8221;.</p>
+</div>
+<div class="section" id="annotation">
+<h3>annotation<a class="headerlink" href="#annotation" title="Permalink to this headline">¶</a></h3>
+<p>Genome annotation in <em>GTF</em> format. For human and mouse, Gencode annotations
+are available at <a class="reference external" href="http://www.gencodegenes.org/">http://www.gencodegenes.org/</a>.
+<em>Very important</em>: chromosome names in the annotations GTF file have to match
+chromosome names in the FASTA genome sequence file. For example, one can use
+ENSEMBL FASTA files with ENSEMBL GTF files, and UCSC FASTA files with UCSC
+FASTA files. However, since UCSC uses chr1, chr2,... naming convention,
+and ENSEMBL uses 1, 2, ... naming, the ENSEMBL and UCSC FASTA and GTF files
+cannot be mixed together.</p>
+<p>Example: &#8220;/home/kai/genome/GRCh38/gencode.v25.annotation.gtf&#8221;.</p>
+</div>
+<div class="section" id="motif-file">
+<h3>motif_file<a class="headerlink" href="#motif-file" title="Permalink to this headline">¶</a></h3>
+<p>MEME format file containing motifs. (<a class="reference download internal" href="_downloads/cisBP_human.meme" download=""><code class="xref download docutils literal"><span class="pre">Human</span></code></a>
+and <a class="reference download internal" href="_downloads/cisBP_mouse.meme" download=""><code class="xref download docutils literal"><span class="pre">mouse</span></code></a> motif files)</p>
+<p>Example: &#8220;/home/kai/motif_databases/cisBP_human.meme&#8221;.</p>
+</div>
+</div>
+<div class="section" id="genome-indices">
+<h2>Genome Indices<a class="headerlink" href="#genome-indices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="seq-index">
+<h3>seq_index<a class="headerlink" href="#seq-index" title="Permalink to this headline">¶</a></h3>
+<p>This is the <em>FILE</em> containing GENOME SEQUENCE INDEX.</p>
+<p>Example: &#8220;/home/kai/genome/GRCh38/GRCh38.index&#8221;.</p>
+</div>
+<div class="section" id="bwa-index">
+<h3>bwa_index<a class="headerlink" href="#bwa-index" title="Permalink to this headline">¶</a></h3>
+<p>This is the <em>DIRECTORY</em> containing BWA INDICES.</p>
+<p>Example: &#8220;/home/kai/genome/GRCh38/BWAIndex/&#8221;.</p>
+</div>
+<div class="section" id="star-index">
+<h3>star_index<a class="headerlink" href="#star-index" title="Permalink to this headline">¶</a></h3>
+<p>This is the <em>DIRECTORY</em> containing STAR INDICES.</p>
+<p>Example: &#8220;/home/kai/genome/GRCh38/STAR_index/&#8221;.</p>
+</div>
+<div class="section" id="rsem-index">
+<h3>rsem_index<a class="headerlink" href="#rsem-index" title="Permalink to this headline">¶</a></h3>
+<p>This is the <em>DIRECTORY</em> containing RSEM INDICES.</p>
+<p>Example: &#8220;/home/kai/genome/GRCh38/RSEM_index/&#8221;.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="input.html" class="btn btn-neutral float-right" title="Input data format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2016-2018, Kai Zhang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: v0.4.0
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="options.html">v0.4.0</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../master/options.html">master</a></dd>
+            <dd><a href="../v1.0/options.html">v1.0</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

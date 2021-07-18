@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tutorial &mdash; Taiji 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'1.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration" href="options.html" />
+    <link rel="prev" title="Compile from source" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Taiji
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Compile from source</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-input">Preparing input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualizing-the-workflow">Visualizing the workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-workflow">Running the workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#parallelism-and-distributed-computing">Parallelism and distributed computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#auto-recovery">Auto-recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">Input data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advance.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_primer.html">Linux Primer</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Taiji</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The Taiji software is a versatile genomics data analysis pipeline.
+It can be used to analyze ATAC-seq, RNA-seq, single cell ATAC-seq and
+Drop-seq data. However, the uniqueness and the power of Taiji really lie in
+its ability to integrate diverse datasets and use these information in a clever
+way to construct regulatory network and identify candidate driver genes.</p>
+<p>Taiji accepts many data formats. It can start with raw data like fastq or
+post-processed files like bam or bed files.</p>
+</div>
+<div class="section" id="how-to-use">
+<h2>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="preparing-input">
+<h3>Preparing input<a class="headerlink" href="#preparing-input" title="Permalink to this headline">¶</a></h3>
+<p>To run the Taiji pipeline, you would need 2 configuration files.</p>
+<p>The first configuration file is used to specify the options used by the pipeline.
+Please look at <a class="reference download internal" href="_downloads/example_config.yml" download=""><code class="xref download docutils literal"><span class="pre">this</span> <span class="pre">example</span> <span class="pre">configuration</span> <span class="pre">file</span></code></a> or <a class="reference internal" href="options.html"><span class="doc">Configuration</span></a> for details.</p>
+<p>The second configuration file contains the information about the input data sets.
+Take a look at <a class="reference download internal" href="_downloads/example_input.yml" download=""><code class="xref download docutils literal"><span class="pre">this</span> <span class="pre">example</span> <span class="pre">file</span></code></a> or <a class="reference internal" href="input.html"><span class="doc">Input data format</span></a>.</p>
+</div>
+<div class="section" id="visualizing-the-workflow">
+<h3>Visualizing the workflow<a class="headerlink" href="#visualizing-the-workflow" title="Permalink to this headline">¶</a></h3>
+<p>You can use <code class="docutils literal"><span class="pre">taiji</span> <span class="pre">view</span> <span class="pre">taiji.html</span></code> to generate a HTML output of the workflow.
+Use a web browser to open the file and see what components are included in the
+Taiji pipeline.</p>
+</div>
+<div class="section" id="running-the-workflow">
+<h3>Running the workflow<a class="headerlink" href="#running-the-workflow" title="Permalink to this headline">¶</a></h3>
+<p>To run the entire workflow, simply supply the <code class="docutils literal"><span class="pre">taiji</span></code> with the first configuration file:
+<code class="docutils literal"><span class="pre">taiji</span> <span class="pre">run</span> <span class="pre">--config</span> <span class="pre">example_config.yml</span></code>.</p>
+<p>Oftentimes you just need to run certain steps. For example, if you only want to
+get some QC metrics, type <code class="docutils literal"><span class="pre">taiji</span> <span class="pre">run</span> <span class="pre">--config</span> <span class="pre">example_config.yml</span> <span class="pre">--select</span> <span class="pre">SCATAC_QC</span></code>.
+You can run multiple steps together using
+<code class="docutils literal"><span class="pre">taiji</span> <span class="pre">run</span> <span class="pre">--config</span> <span class="pre">example_config.yml</span> <span class="pre">--select</span> <span class="pre">STEP1,STEP2,STEP3</span></code>.</p>
+</div>
+</div>
+<div class="section" id="parallelism-and-distributed-computing">
+<h2>Parallelism and distributed computing<a class="headerlink" href="#parallelism-and-distributed-computing" title="Permalink to this headline">¶</a></h2>
+<p>Taiji can use multiple cores. For example, to use 5 cores, simply type:
+<code class="docutils literal"><span class="pre">taiji</span> <span class="pre">run</span> <span class="pre">--config</span> <span class="pre">config.yml</span> <span class="pre">-n</span> <span class="pre">5</span> <span class="pre">+RTS</span> <span class="pre">-N5</span></code>.
+<code class="docutils literal"><span class="pre">-n</span> <span class="pre">5</span> <span class="pre">+RTS</span> <span class="pre">-N5</span></code> tells the taiji to use 5 cores/threads.</p>
+<p>Taiji also supports distributed computing. This feature can be turned on by adding
+the <code class="docutils literal"><span class="pre">--cloud</span></code> flag. To use this feature, you need to have a job scheduling system like
+SGE or slurm. See <a class="reference internal" href="advance.html"><span class="doc">Advanced Usage</span></a> for more details.</p>
+</div>
+<div class="section" id="auto-recovery">
+<h2>Auto-recovery<a class="headerlink" href="#auto-recovery" title="Permalink to this headline">¶</a></h2>
+<p>The pipeline supports auto-recovery, which means you can stop the program at
+any time and it will resume from the last checkpoint.
+The checkpoints are saved in a file called &#8220;sciflow.db&#8221;.
+Delete this file if you want a fresh run.</p>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<p>The structure of the results in the output directory looks like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">output_directory</span>
+<span class="o">+--</span> <span class="n">ATACSeq</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">Bam</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">+--</span> <span class="o">*.</span><span class="n">bam</span>              <span class="p">(</span><span class="n">raw</span> <span class="n">alignment</span> <span class="n">files</span><span class="p">)</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">+--</span> <span class="o">*</span><span class="n">_filt</span><span class="o">.</span><span class="n">bam</span>         <span class="p">(</span><span class="n">filtered</span> <span class="n">alignment</span> <span class="n">files</span><span class="p">)</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">+--</span> <span class="o">*</span><span class="n">_filt_dedup</span><span class="o">.</span><span class="n">bam</span>   <span class="p">(</span><span class="n">filtered</span> <span class="ow">and</span> <span class="n">deduplicated</span> <span class="n">alignment</span> <span class="n">files</span><span class="p">)</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">Bed</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">+--</span> <span class="o">*.</span><span class="n">bed</span><span class="o">.</span><span class="n">gz</span>           <span class="p">(</span><span class="n">BED</span> <span class="n">files</span> <span class="n">converted</span> <span class="kn">from</span> <span class="nn">Bam</span> <span class="n">files</span><span class="p">)</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">+--</span> <span class="o">*.</span><span class="n">merged</span><span class="o">.</span><span class="n">bed</span><span class="o">.</span><span class="n">gz</span>    <span class="p">(</span><span class="n">merged</span> <span class="n">BED</span> <span class="n">file</span> <span class="kn">from</span> <span class="nn">all</span> <span class="n">replicates</span><span class="p">)</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">Download</span>               <span class="p">(</span><span class="nb">any</span> <span class="n">files</span> <span class="n">that</span> <span class="n">are</span> <span class="n">downloaded</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">web</span><span class="p">)</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">Peaks</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">+--</span> <span class="o">*.</span><span class="n">narrowPeak</span>       <span class="p">(</span><span class="n">narrow</span> <span class="n">peaks</span> <span class="n">called</span> <span class="n">by</span> <span class="n">MACS2</span> <span class="n">using</span> <span class="n">loose</span> <span class="n">cutoff</span><span class="p">)</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">TFBS</span>
+<span class="o">|</span>   <span class="o">|</span>   <span class="o">+--</span> <span class="o">*.</span><span class="n">bed</span>              <span class="p">(</span><span class="n">TF</span> <span class="n">binding</span> <span class="n">sites</span> <span class="n">found</span> <span class="ow">in</span> <span class="nb">open</span> <span class="n">chromatin</span><span class="p">)</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">openChromatin</span><span class="o">.</span><span class="n">bed</span>      <span class="p">(</span><span class="n">the</span> <span class="n">union</span> <span class="n">of</span> <span class="n">accessible</span> <span class="n">chromatin</span> <span class="kn">from</span> <span class="nn">all</span> <span class="n">samples</span><span class="p">)</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">QC</span><span class="o">.</span><span class="n">tsv</span>                 <span class="p">(</span><span class="n">some</span> <span class="n">quality</span> <span class="n">control</span> <span class="n">metrics</span><span class="p">)</span>
+<span class="o">+--</span> <span class="n">Network</span>                    <span class="p">(</span><span class="n">network</span> <span class="n">related</span> <span class="n">files</span><span class="p">)</span>
+<span class="o">+--</span> <span class="n">Promoters</span>
+    <span class="o">+--</span> <span class="o">*</span><span class="n">_promoters</span><span class="o">.</span><span class="n">bed</span>        <span class="p">(</span><span class="n">active</span> <span class="n">promoters</span><span class="p">)</span>
+<span class="o">+--</span> <span class="n">RNASeq</span>
+    <span class="o">+--</span> <span class="o">*</span><span class="n">_gene_quant</span><span class="o">.</span><span class="n">tsv</span>       <span class="p">(</span><span class="n">gene</span> <span class="n">quantification</span><span class="p">)</span>
+    <span class="o">+--</span> <span class="o">*.</span><span class="n">bam</span>                  <span class="p">(</span><span class="n">alignment</span> <span class="n">files</span><span class="p">)</span>
+    <span class="o">+--</span> <span class="n">expression_profile</span><span class="o">.</span><span class="n">tsv</span> <span class="p">(</span><span class="n">expression</span> <span class="n">profiles</span> <span class="kn">from</span> <span class="nn">all</span> <span class="n">samples</span> <span class="ow">in</span> <span class="n">one</span> <span class="n">file</span><span class="p">)</span>
+<span class="o">+--</span> <span class="n">GeneRanks_PValues</span><span class="o">.</span><span class="n">tsv</span>      <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">values</span> <span class="k">for</span> <span class="n">the</span> <span class="n">PageRank</span> <span class="n">scores</span><span class="p">)</span>
+<span class="o">+--</span> <span class="n">GeneRanks</span><span class="o">.</span><span class="n">tsv</span>              <span class="p">(</span><span class="n">PageRank</span> <span class="n">scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="options.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="install.html" class="btn btn-neutral float-left" title="Compile from source" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2016-2019, Kai Zhang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: v1.0
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../v0.4.0/tutorial.html">v0.4.0</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../master/tutorial.html">master</a></dd>
+            <dd><a href="tutorial.html">v1.0</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+RNA-seq:
+  - id: liver_RNA
+    group: liver
+    replicates:
+      - rep: 1
+        files:
+          - pair:
+            - path: /home/user/data/liver_RNA_seq_F.fastq.gz
+            - path: /home/user/data/liver_RNA_seq_R.fastq.gz
+
+  - id: heart_RNA
+    group: heart
+    replicates:
+      - rep: 1
+        files:
+          - pair:
+            - path: /home/user/data/heart_RNA_seq_rep1_F.fastq.gz
+            - path: /home/user/data/heart_RNA_seq_rep1_R.fastq.gz
+      - rep: 2
+        files:
+          # Customized gene expression file
+          - path: /home/user/data/heart_RNA_seq_rep2.tsv
+            tags: ['GeneQuant']
+
+ATAC-seq:
+  - id: liver_ATAC
+    group: liver
+    replicates:
+      - rep: 1
+        files:
+          - path: ENCFF844GGH
+            tags: ['ENCODE']
+      - rep: 2
+        files:
+          - path: GSEXXX
+            format: SRA
+
+  - id: heart_ATAC
+    group: heart
+    replicates:
+      - rep: 1
+        files:
+          - path: /home/user/data/heart_ATAC_seq.bam
+            tags: ['PairedEnd']
+
+HiC:
+  - id: liver_HiC
+    group: liver
+    replicates:
+      - rep: 1
+        files:
+          - path: /home/user/data/liver_loops.txt
+            tags: ['ChromosomeLoop']
+
+  - id: heart_ATAC
+    group: heart
+    replicates:
+      - rep: 1
+        files:
+          - path: /home/user/data/heart_loops.txt
+            tags: ['ChromosomeLoop']
+
+# Experimental feature added since v0.4.0
+H3K27ac:
+  - id: liver_H3K27ac
+    group: liver
+    replicates:
+      - rep: 0
+        files:
+          - path: /home/user/data/liver_H3K27ac.peak
+            format: NarrowPeak
+  - id: heart_H3K27ac
+    group: heart
+    replicates:
+      - rep: 0
+        files:
+          - path: /home/user/data/heart_H3K27ac.peak
+            format: BroadPeak

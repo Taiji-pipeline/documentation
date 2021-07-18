@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Configuration &mdash; Taiji 1.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'1.3.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Input data format" href="input.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Taiji
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Compile from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-options">Basic options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input">input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-dir">output_dir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assembly">assembly</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-options">Advanced options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#genome">genome</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#annotation">annotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#motif-file">motif_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#genome-index">genome_index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bwa-index">bwa_index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bwa-seed-length">bwa_seed_length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#star-index">star_index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rsem-index">rsem_index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#callpeak-fdr">callpeak_fdr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#callpeak-genome-size">callpeak_genome_size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-network">external_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tmp-dir">tmp_dir</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#single-cell-atac-seq-analysis">Single cell ATAC-seq analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tss-enrichment-cutoff">tss_enrichment_cutoff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fragment-cutoff">fragment_cutoff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#doublet-score-cutoff">doublet_score_cutoff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cell-barcode-length">cell_barcode_length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-optimizer">cluster_optimizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-resolution">cluster_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-resolution-list">cluster_resolution_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-by-window">cluster_by_window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#window-size">window_size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#do-subclustering">do_subclustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subcluster-resolution">subcluster_resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster-exclude">cluster_exclude</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#single-cell-rna-seq-analysis">Single cell RNA-seq analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scrna-cell-barcode-length">scrna_cell_barcode_length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scrna-umi-length">scrna_umi_length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scrna-doublet-score-cutoff">scrna_doublet_score_cutoff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scrna-cluster-resolutions">scrna_cluster_resolutions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#distributed-computing">Distributed computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submit-command">submit_command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submit-cpu-format">submit_cpu_format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submit-memory-format">submit_memory_format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submit-params">submit_params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resource">resource</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">Input data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advance.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_primer.html">Linux Primer</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Taiji</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>To get started, modify the example file below:</p>
+<ul class="simple">
+<li><a class="reference download internal" href="_downloads/example_config.yml" download=""><code class="xref download docutils literal"><span class="pre">example</span> <span class="pre">configuration</span> <span class="pre">file</span></code></a>.</li>
+</ul>
+<p>See sections below for explainations of each field.</p>
+<div class="section" id="basic-options">
+<h2>Basic options<a class="headerlink" href="#basic-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="input">
+<h3>input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h3>
+<p>The path to a file specifying the input data sets. See <a class="reference internal" href="input.html"><span class="doc">Input data format</span></a> for instructions for creating the input file.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;data/input.yml&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="output-dir">
+<h3>output_dir<a class="headerlink" href="#output-dir" title="Permalink to this headline">¶</a></h3>
+<p>Directory containing the results.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">output_dir</span><span class="p">:</span> <span class="s2">&quot;output/&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="assembly">
+<h3>assembly<a class="headerlink" href="#assembly" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.) The name of the genome assembly. This is an optional parameter.
+We use this parameter to automatically determine the values of <code class="docutils literal"><span class="pre">genome</span></code>, <code class="docutils literal"><span class="pre">annotation</span></code>
+and <code class="docutils literal"><span class="pre">motif_file</span></code>.
+If your genome assembly is not supported by the program, you will need to mannually
+set the parameters for <code class="docutils literal"><span class="pre">genome</span></code>, <code class="docutils literal"><span class="pre">annotation</span></code> and <code class="docutils literal"><span class="pre">motif_file</span></code>.</p>
+<p>We currently support the following assemblies: &#8220;GRCh38&#8221;, &#8220;hg38&#8221;, &#8220;GRCm38&#8221; or &#8220;mm10&#8221;.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">assembly</span><span class="p">:</span> <span class="s2">&quot;GRCh38&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="advanced-options">
+<h2>Advanced options<a class="headerlink" href="#advanced-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="genome">
+<h3>genome<a class="headerlink" href="#genome" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+Complete genome in a SINGLE ungzipped FASTA file.</p>
+<p>If not specified, this will be downloaded according to <code class="docutils literal"><span class="pre">assembly</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">genome</span><span class="p">:</span> <span class="s2">&quot;/home/kai/genome/GRCh38/genome.fa&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="annotation">
+<h3>annotation<a class="headerlink" href="#annotation" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+Genome annotation in <em>GTF</em> format. For human and mouse, Gencode annotations
+are available at <a class="reference external" href="http://www.gencodegenes.org/">http://www.gencodegenes.org/</a>.
+<em>Very important</em>: chromosome names in the annotations GTF file have to match
+chromosome names in the FASTA genome sequence file. For example, one can use
+ENSEMBL FASTA files with ENSEMBL GTF files, and UCSC FASTA files with UCSC
+FASTA files. However, since UCSC uses chr1, chr2,... naming convention,
+and ENSEMBL uses 1, 2, ... naming, the ENSEMBL and UCSC FASTA and GTF files
+cannot be mixed together.</p>
+<p>If not specified, this will be downloaded according to <code class="docutils literal"><span class="pre">assembly</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">annotation</span><span class="p">:</span> <span class="s2">&quot;/home/kai/genome/GRCh38/gencode.v25.annotation.gtf&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="motif-file">
+<h3>motif_file<a class="headerlink" href="#motif-file" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+A plain text file containing PWMs in MEME format.
+The naming convention for motifs is <code class="docutils literal"><span class="pre">TF_NAME+OTHER_STRING</span></code>, where
+the <code class="docutils literal"><span class="pre">TF_NAME</span></code> should match the gene names in your annotation file.
+You may include multipe PWMs for same TFs and use <code class="docutils literal"><span class="pre">OTHER_STRING</span></code> to distinguish
+them. For example, <code class="docutils literal"><span class="pre">SP1+ID1</span></code>, <code class="docutils literal"><span class="pre">SP1+ID2</span></code>.
+Taiji will combine sites found from different PWMs.</p>
+<p>We provide human and mouse motifs here (downloaded from cisBP database):
+<a class="reference download internal" href="_downloads/cisBP_human.meme" download=""><code class="xref download docutils literal"><span class="pre">Human</span></code></a>
+and <a class="reference download internal" href="_downloads/cisBP_mouse.meme" download=""><code class="xref download docutils literal"><span class="pre">mouse</span></code></a> motif files.
+When <code class="docutils literal"><span class="pre">motif_file</span></code> is not specified, these will be used according to
+the value of the <code class="docutils literal"><span class="pre">assembly</span></code> field.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">motif_file</span><span class="p">:</span> <span class="s2">&quot;/home/kai/motif_databases/cisBP_human.meme&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="genome-index">
+<h3>genome_index<a class="headerlink" href="#genome-index" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+This is the <em>FILE</em> containing customized genome sequence index.
+The program will detect whether the file exists.
+If the index is not present, it will generate the index at the specified location.
+If you leave this parameter unspecified,
+the program will generate the index in the <code class="docutils literal"><span class="pre">output_dir</span></code>.</p>
+<p>To avoid re-generate the index for every project, we recommend you to set
+this parameter mannually.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">genome_index</span><span class="p">:</span> <span class="s2">&quot;/home/kai/genome/GRCh38/GRCh38.index&quot;</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bwa-index">
+<h3>bwa_index<a class="headerlink" href="#bwa-index" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+BWA genome index prefix.
+The program will detect whether the directory contain proper BWA indices.
+If the indices are not present, it will generate the indices at the specified
+location. If you leave this parameter unspecified,
+the program will generate the indices in the <code class="docutils literal"><span class="pre">output_dir</span></code>.</p>
+<p>To avoid re-generate the indices for every project, we recommend you to set
+this parameter mannually.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bwa_index</span><span class="p">:</span> <span class="s2">&quot;/home/kai/genome/GRCh38/BWAIndex/genome.fa&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bwa-seed-length">
+<h3>bwa_seed_length<a class="headerlink" href="#bwa-seed-length" title="Permalink to this headline">¶</a></h3>
+<p>The &#8220;-k&#8221; parameter in BWA &#8211; minimum seed length.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bwa_seed_length</span><span class="p">:</span> <span class="mi">32</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="star-index">
+<h3>star_index<a class="headerlink" href="#star-index" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+This is the <em>DIRECTORY</em> containing STAR INDICES.
+The program will detect whether the directory contain proper STAR indices.
+If the indices are not present, it will generate the indices within the specified
+directory. If you leave this parameter unspecified,
+the program will generate the indices in the <code class="docutils literal"><span class="pre">output_dir</span></code>.</p>
+<p>To avoid re-generate the indices for every project, we recommend you to set
+this parameter mannually.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">star_index</span><span class="p">:</span> <span class="s2">&quot;/home/kai/genome/GRCh38/STAR_index/&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rsem-index">
+<h3>rsem_index<a class="headerlink" href="#rsem-index" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+RSEM genome index prefix.
+The program will detect whether the directory contain proper RSEM indices.
+If the indices are not present, it will generate the indices at the specified
+location. If you leave this parameter unspecified,
+the program will generate the indices in the <code class="docutils literal"><span class="pre">output_dir</span></code>.</p>
+<p>To avoid re-generate the indices for every project, we recommend you to set
+this parameter mannually.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rsem_index</span><span class="p">:</span> <span class="s2">&quot;/home/kai/genome/GRCh38/RSEM_index/genome&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="callpeak-fdr">
+<h3>callpeak_fdr<a class="headerlink" href="#callpeak-fdr" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+FDR threshold for peak calling in MACS2.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">callpeak_fdr</span><span class="p">:</span> <span class="mf">0.01</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="callpeak-genome-size">
+<h3>callpeak_genome_size<a class="headerlink" href="#callpeak-genome-size" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+The effective genome size used for MACS2&#8217;s &#8220;-g/&#8211;gsize&#8221; parameter.
+This will be automatically determined based on the assembly or genome file.
+For human or mouse assembly, we set this parameter to &#8220;hs&#8221; or &#8220;mm&#8221;.
+For other genome, we set this parameter to <code class="docutils literal"><span class="pre">0.9</span> <span class="pre">*</span> <span class="pre">GENOME_SIZE</span></code>.
+The value of this parameter usually doesn&#8217;t make big difference.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">callpeak_genome_size</span><span class="p">:</span> <span class="s2">&quot;2.7e9&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="external-network">
+<h3>external_network<a class="headerlink" href="#external-network" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.) External network file to be used in PageRank analysis.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">external_network</span><span class="p">:</span> <span class="s2">&quot;pathway.tsv&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tmp-dir">
+<h3>tmp_dir<a class="headerlink" href="#tmp-dir" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.) The directory for storing temporary files.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tmp_dir</span><span class="p">:</span> <span class="s2">&quot;/tmp&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="single-cell-atac-seq-analysis">
+<h2>Single cell ATAC-seq analysis<a class="headerlink" href="#single-cell-atac-seq-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Parameters related to scATAC-seq analysis. All parameters in this section
+should be specified under <cite>scatac_options</cite>. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scatac_options</span><span class="p">:</span>
+    <span class="n">cluster_optimizer</span><span class="p">:</span> <span class="n">CPM</span>
+    <span class="n">cluster_by_window</span><span class="p">:</span> <span class="n">false</span>
+    <span class="n">cluster_resolution_list</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">cluster_resolution</span><span class="p">:</span> <span class="mf">0.0075</span>
+    <span class="n">tss_enrichment_cutoff</span><span class="p">:</span> <span class="mi">7</span>
+    <span class="n">do_subclustering</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">cluster_exclude</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C3.3&quot;</span><span class="p">,</span> <span class="s2">&quot;C25.3&quot;</span><span class="p">]</span>
+    <span class="n">subcluster_resolution</span><span class="p">:</span>
+        <span class="s2">&quot;C1&quot;</span><span class="p">:</span> <span class="mf">0.01</span>
+        <span class="s2">&quot;C2&quot;</span><span class="p">:</span> <span class="mf">0.03</span>
+        <span class="s2">&quot;C4&quot;</span><span class="p">:</span> <span class="mf">0.05</span>
+        <span class="s2">&quot;C5&quot;</span><span class="p">:</span> <span class="mf">0.06</span>
+        <span class="s2">&quot;C6&quot;</span><span class="p">:</span> <span class="mf">0.05</span>
+        <span class="s2">&quot;C7&quot;</span><span class="p">:</span> <span class="mf">0.03</span>
+        <span class="s2">&quot;C8&quot;</span><span class="p">:</span> <span class="mf">0.01</span>
+        <span class="s2">&quot;C10&quot;</span><span class="p">:</span> <span class="mf">0.001</span>
+        <span class="s2">&quot;C11&quot;</span><span class="p">:</span> <span class="mf">0.001</span>
+</pre></div>
+</div>
+<div class="section" id="tss-enrichment-cutoff">
+<h3>tss_enrichment_cutoff<a class="headerlink" href="#tss-enrichment-cutoff" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+TSS enrichment cutoff for filtering cell in single cell ATAC-seq analysis.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tss_enrichment_cutoff</span><span class="p">:</span> <span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fragment-cutoff">
+<h3>fragment_cutoff<a class="headerlink" href="#fragment-cutoff" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.) Used to remove cells that do not have enough fragments/reads.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fragment_cutoff</span><span class="p">:</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doublet-score-cutoff">
+<h3>doublet_score_cutoff<a class="headerlink" href="#doublet-score-cutoff" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>::</dt>
+<dd>doublet_score_cutoff: 0.5</dd>
+</dl>
+</div>
+<div class="section" id="cell-barcode-length">
+<h3>cell_barcode_length<a class="headerlink" href="#cell-barcode-length" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>cell_barcode_length: 10</dd>
+</dl>
+</div>
+<div class="section" id="cluster-optimizer">
+<h3>cluster_optimizer<a class="headerlink" href="#cluster-optimizer" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.) Quality function used in graph clustering. Available options are <cite>RBConfiguration</cite> and <cite>CPM</cite>.
+<cite>RBConfiguration</cite> optimizes modularity and has resolution limit while
+<cite>CPM</cite> is resolution-limit free.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cluster_optimizer</span><span class="p">:</span> <span class="n">CPM</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cluster-resolution">
+<h3>cluster_resolution<a class="headerlink" href="#cluster-resolution" title="Permalink to this headline">¶</a></h3>
+<p>Mannually specify the clustering resolution. Otherwise it will be automatically determined.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cluster_resolution</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cluster-resolution-list">
+<h3>cluster_resolution_list<a class="headerlink" href="#cluster-resolution-list" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cluster_resolution_list</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">,</span> <span class="mf">0.64</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cluster-by-window">
+<h3>cluster_by_window<a class="headerlink" href="#cluster-by-window" title="Permalink to this headline">¶</a></h3>
+<p>Whether to use bin/window based clustering. Default is to use peak based clustering.</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>cluster_by_window: False</dd>
+</dl>
+</div>
+<div class="section" id="window-size">
+<h3>window_size<a class="headerlink" href="#window-size" title="Permalink to this headline">¶</a></h3>
+<p>Window/bin size.</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>window_size: 5000</dd>
+</dl>
+</div>
+<div class="section" id="do-subclustering">
+<h3>do_subclustering<a class="headerlink" href="#do-subclustering" title="Permalink to this headline">¶</a></h3>
+<p>Whether to perform iterative clustering to identify subclusters.</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>do_subclustering: False</dd>
+</dl>
+</div>
+<div class="section" id="subcluster-resolution">
+<h3>subcluster_resolution<a class="headerlink" href="#subcluster-resolution" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="cluster-exclude">
+<h3>cluster_exclude<a class="headerlink" href="#cluster-exclude" title="Permalink to this headline">¶</a></h3>
+<p>Clusters to be excluded from the final result.</p>
+</div>
+</div>
+<div class="section" id="single-cell-rna-seq-analysis">
+<h2>Single cell RNA-seq analysis<a class="headerlink" href="#single-cell-rna-seq-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="scrna-cell-barcode-length">
+<h3>scrna_cell_barcode_length<a class="headerlink" href="#scrna-cell-barcode-length" title="Permalink to this headline">¶</a></h3>
+<p>The length of the cell barcode used in demultiplexing.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scrna_cell_barcode_length</span><span class="p">:</span> <span class="mi">12</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scrna-umi-length">
+<h3>scrna_umi_length<a class="headerlink" href="#scrna-umi-length" title="Permalink to this headline">¶</a></h3>
+<p>The length of the UMI used in demultiplexing.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scrna_umi_length</span><span class="p">:</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scrna-doublet-score-cutoff">
+<h3>scrna_doublet_score_cutoff<a class="headerlink" href="#scrna-doublet-score-cutoff" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.) Cutoff for doublet detection, a value between 0 and 1 reflecting
+how likely a &#8220;cell&#8221; is a doublet. (default is 0.5)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scrna_doublet_score_cutoff</span><span class="p">:</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scrna-cluster-resolutions">
+<h3>scrna_cluster_resolutions<a class="headerlink" href="#scrna-cluster-resolutions" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="distributed-computing">
+<span id="id1"></span><h2>Distributed computing<a class="headerlink" href="#distributed-computing" title="Permalink to this headline">¶</a></h2>
+<p>The following settings are used in the cloud computing mode.</p>
+<div class="section" id="submit-command">
+<h3>submit_command<a class="headerlink" href="#submit-command" title="Permalink to this headline">¶</a></h3>
+<p>The command for submitting jobs.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">submit_command</span><span class="p">:</span> <span class="s2">&quot;qsub&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="submit-cpu-format">
+<h3>submit_cpu_format<a class="headerlink" href="#submit-cpu-format" title="Permalink to this headline">¶</a></h3>
+<p>The template for specifying the number of cpu cores in the job submission script.
+This is system/environment dependent.
+For example, if your system uses <code class="docutils literal"><span class="pre">-l</span> <span class="pre">nodes=1:ppn=XX</span></code> to allocate CPU resource,
+you should put <code class="docutils literal"><span class="pre">-l</span> <span class="pre">nodes=1:ppn=%d</span></code> here.
+The <code class="docutils literal"><span class="pre">%d</span></code> will be replaced by the actual numbers when submitting the jobs.
+The CPU cores for individual steps can be modified in the <a class="reference internal" href="#job-resource"><span class="std std-ref">resource</span></a> section below.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">submit_cpu_format</span><span class="p">:</span> <span class="s2">&quot;-l nodes=1:ppn=</span><span class="si">%d</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="submit-memory-format">
+<h3>submit_memory_format<a class="headerlink" href="#submit-memory-format" title="Permalink to this headline">¶</a></h3>
+<p>The template for specifying the amount of memory in the job submission script.
+This is system/environment dependent.
+For example, if your system uses <code class="docutils literal"><span class="pre">-l</span> <span class="pre">mem=XXG</span></code> to allocate memory resource,
+you should put <code class="docutils literal"><span class="pre">-l</span> <span class="pre">mem=%dG</span></code> here.
+The <code class="docutils literal"><span class="pre">%d</span></code> will be replaced by the actual numbers when submitting the jobs.
+The memory for individual steps can be modified in the <a class="reference internal" href="#job-resource"><span class="std std-ref">resource</span></a> section below.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">submit_memory_format</span><span class="p">:</span> <span class="s2">&quot;-l mem=</span><span class="si">%d</span><span class="s2">G&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="submit-params">
+<h3>submit_params<a class="headerlink" href="#submit-params" title="Permalink to this headline">¶</a></h3>
+<p>Additional parameters to be included in the submission command.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">submit_params</span><span class="p">:</span> <span class="s2">&quot;-q glean&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resource">
+<span id="job-resource"></span><h3>resource<a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h3>
+<p>(Optional.)
+Specify the computational resources for each step.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">resource</span><span class="p">:</span>
+    <span class="n">SCATAC_Remove_Duplicates</span><span class="p">:</span>
+        <span class="n">parameter</span><span class="p">:</span> <span class="s2">&quot;-q home -l walltime=24:00:00&quot;</span>
+
+    <span class="n">SCATAC_Merged_Reduce_Dims</span><span class="p">:</span>
+        <span class="n">parameter</span><span class="p">:</span> <span class="s2">&quot;-q home -l walltime=24:00:00&quot;</span>
+        <span class="n">cpu</span><span class="p">:</span> <span class="mi">4</span>
+        <span class="n">memory</span><span class="p">:</span> <span class="mi">80</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="input.html" class="btn btn-neutral float-right" title="Input data format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2016-2021, Kai Zhang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: master
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="v0.4.0/options.html">v0.4.0</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="master/options.html">master</a></dd>
+            <dd><a href="v1.0/options.html">v1.0</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
