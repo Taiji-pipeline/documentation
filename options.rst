@@ -229,7 +229,23 @@ should be specified under `scatac_options`. For example:
 ::
 
     scatac_options:
-
+        cluster_optimizer: CPM
+        cluster_by_window: false
+        cluster_resolution_list: [0.001, 0.002, 0.02, 0.05, 0.1, 0.25, 1]
+        cluster_resolution: 0.0075
+        tss_enrichment_cutoff: 7
+        do_subclustering: true
+        cluster_exclude: ["C3.3", "C25.3"]
+        subcluster_resolution:
+            "C1": 0.01
+            "C2": 0.03
+            "C4": 0.05
+            "C5": 0.06
+            "C6": 0.05
+            "C7": 0.03
+            "C8": 0.01
+            "C10": 0.001
+            "C11": 0.001
 
 tss_enrichment_cutoff
 ^^^^^^^^^^^^^^^^^^^^^
@@ -323,6 +339,8 @@ subcluster_resolution
 
 cluster_exclude
 ^^^^^^^^^^^^^^^
+
+Clusters to be excluded from the final result.
 
 
 Single cell RNA-seq analysis
